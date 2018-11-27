@@ -1,7 +1,5 @@
 <div class="container">
    
-    
-    <div *ngFor="let item of vendorList">
-    <app-vendor-details></app-vendor-details>
-  </div>
+       
+    <app-vendor-details *ngFor="let item of vendorList" [pitem]="item"></app-vendor-details>
   </div>
