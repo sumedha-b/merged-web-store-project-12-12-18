@@ -8,6 +8,12 @@ const fileUpload = require('express-fileupload');
 var https = require('https');
 var fs = require('fs');
 
+var path = require('path');
+var appDir = path.dirname(require.main.filename);
+global.appRoot=appDir;
+console.log("appDir = "+appDir);
+
+
 
 var app = express(); //Instantiating Express
 app.set('port', process.env.PORT || 4000);

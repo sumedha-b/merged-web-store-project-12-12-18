@@ -26,8 +26,8 @@
       <div class="row">
           <div class="col-lg-12">
               <div class="product-upload-inner"><!-- product upload inner -->
-                  <form  class="product-upload-form">
-                    
+                  <form>
+                    <span>{{message}}</span>
                       <div class="form-element margin-bottom-20">
                                 <div class="row">
                                     <div class="col-sm-6"><label>VCode <span>**</span></label>
@@ -36,7 +36,7 @@
                                         <input type="text" name="name" class="input-field" [(ngModel)]='vendor.name' placeholder="Enter Name.."></div>
                                   </div>  
                     </div>
-                      <span>{{message}}</span>
+                     
                       <div class="form-element margin-bottom-20">
                           <label>Email <span>**</span></label>
                           <input type="email" class="input-field" name = "email" [(ngModel)]='vendor.email' placeholder="Enter email..">
@@ -53,7 +53,13 @@
 
                       <div class="form-element margin-bottom-20">
                             <label>Profile Pic <span>**</span></label>
-                          <input type="text" class="input-field" name = "photo" [(ngModel)]="vendor.photo">
+                <input 
+                            style="display:inline" 
+                            type="file" (change)="onFileChanged($event)">
+                  <!--
+                 <input type="button" (click)="fileInput.click()" class="submit-btn" value="Select Photo">
+                  -->
+                      <img [src]="imageShow" style="height: 120px;">    
                       </div>
                      
                       <div class="form-element margin-bottom-20">
@@ -61,7 +67,7 @@
                           <input type="text" class="input-field" name = "comment" [(ngModel)]= "vendor.comment">
                       </div>
                       <div class="btn-wrapper">
-                              <input type="button" (click)="addVendor()" class="submit-btn" value="Add Vendor">
+                              <input type="button" (click)="addVendor();" class="submit-btn" value="Add Vendor">
                       </div>
                   </form>
               </div><!-- //.product upload inner -->
