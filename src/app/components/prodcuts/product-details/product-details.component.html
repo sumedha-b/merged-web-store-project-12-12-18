@@ -37,18 +37,7 @@
                               <img src="assets/img/product-details/03.jpg" alt="product details image">
                           </div>
                       </div>
-                      <ul class="owl-thumbs product-deails-thumb" data-slider-id="1">
-                          
-                          <li class="owl-thumb-item">
-                              <img src="assets/img/product-details/thumb/01.jpg" alt="product details thumb">
-                          </li>
-                          <li class="owl-thumb-item">
-                              <img src="assets/img/product-details/thumb/02.jpg" alt="product details thumb">
-                          </li>
-                          <li class="owl-thumb-item">
-                              <img src="assets/img/product-details/thumb/03.jpg" alt="product details thumb">
-                          </li>
-                      </ul>
+
                   </div><!-- //.left content area -->
               </div>
               <div class="col-lg-6">
@@ -65,26 +54,26 @@
                           <span class="orders">Orders (200+)</span>
                       </div>
                       <div class="bottom-content">
-                          <span class="cat">accessories</span>
-                          <h3 class="title">Wireless Audio System Multiroom 360</h3>
+                          <span class="cat">{{product.category}}</span>
+                          <h3 class="title">{{product.title}}</h3>
                           <div class="price-area">
                               <div class="left">
-                                      <span class="sprice">$460</span>
-                                      <span class="dprice"><del>$689</del></span>
+                                      <span class="sprice">${{product.price}}</span>
+                                      <span class="dprice"><del>${{product.sprice}}</del></span>
                               </div>
                               <div class="right">
                                   <a href="#" class="size">size chart</a>
                               </div>
                           </div>
                           <ul class="product-spec">
-                              <li>Brands:  <span class="right">Hewlett-Packard </span></li>
-                              <li>Product Code: <span class="right">d12</span></li>
-                              <li>Reward Points:  <span class="right">100 </span></li>
-                              <li>Stock:  <span class="right base-color">In Stock </span></li>
+                              <li>Brands:  <span class="right">{{product.brands}} </span></li>
+                              <li>Product Code: <span class="right">{{product.pid}}</span></li>
+                              <li>Reward Points:  <span class="right">{{product.rewardPoints}} </span></li>
+                              <li>Stock:  <span class="right base-color">{{product.stock}} </span></li>
                           </ul>
                           <div class="pdescription">
                               <h4 class="title">Overview</h4>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Excepteur sint occaecat cupida...</p>
+                              <p>{{product.overview}}</p>
 
                           </div>
                           <div class="paction">

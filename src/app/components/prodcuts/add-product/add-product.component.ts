@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
+import { Product } from 'src/app/model/product';
 
 
 @Component({
@@ -14,55 +15,12 @@ export class AddProductComponent implements OnInit {
   ngOnInit() {
   }
 
-  pid:string;
-  sku:string;
-
-  title:string;
-
-  category:string;
-  brand:string;
-
-  price: number;
-  sellPrice:number;
-  rewardPoint:number;
-  stock:string;
-
-  color:string;
-  size:number;
-  weight:number;
-
-  vendorName:string;
-  rating:number;
-
-  imageURL:string;
-  overview:string;
-  description:string;
-  fetures:string;
-  reviews:string;
-  technicalSpecs:string[];
-
+  public product:Product = new Product();
+  
   submit():void {
-    var product = {pid:this.pid, 
-                  sku:this.sku,
-                  title:this.title,
-                  category: this.category,
-                  brand:this.brand,
-                  price:this.price,
-                  sellPrice:this.sellPrice,
-                  rewardPoint:this.rewardPoint,
-                  stock:this.stock,
-                  color:this.color,
-                  size:this.size,
-                  weight:this.weight,
-                  rating:this.rating,
-                  imageURL:this.imageURL,
-                  overview:this.overview,
-                  description:this.description,
-                  fetures:this.fetures,
-                  reviews:this.reviews,
-                  technicalSpecs:this.technicalSpecs};             
-                  console.log(product);
-      this.productService.uploadProduct(product).subscribe(data =>{
+           
+      console.log(this.product);
+      this.productService.uploadProduct(this.product).subscribe(data =>{
         if(data.status== "success"){
           console.log('save successfull');
         }
