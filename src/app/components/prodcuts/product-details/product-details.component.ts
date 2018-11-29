@@ -11,13 +11,9 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductDetailsComponent implements OnInit {
   public product:Product= new Product();
 
-  constructor(private route: ActivatedRoute,private productService: ProductService) {
-    
-  }
-
+  constructor(private route: ActivatedRoute,private productService: ProductService) {}
   ngOnInit() {
     this.route.params.subscribe((params)=>{
-      
       this.productService.getProductByPid(params['id']).subscribe((data)=>{
         this.product = data.pop();
          console.log(this.product);
