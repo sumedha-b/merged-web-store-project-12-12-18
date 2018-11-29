@@ -38,6 +38,7 @@ export class AddVendorComponent implements OnInit {
   }
 
   public addVendor(){
+    console.log("Add Vendor method!!!!!!!!!!!!!!");
     console.log(this.vendor);
      this.vendorService.addVendor(this.vendor,this.selectedFile).subscribe(data =>{
         console.log(data);

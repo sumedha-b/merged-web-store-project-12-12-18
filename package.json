@@ -21,15 +21,15 @@
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
     "core-js": "^2.5.4",
-    "rxjs": "~6.3.3",
-    "zone.js": "~0.8.26",
     "express": "^4.16.4",
     "express-fileupload": "^1.0.0",
     "jsonwebtoken": "^8.3.0",
     "mongodb": "^3.1.9",
     "mongoose": "^5.3.10",
-    "nodemailer": "^4.6.8",
-    "randomstring": "^1.1.5"
+    "nodemailer": "^4.7.0",
+    "randomstring": "^1.1.5",
+    "rxjs": "~6.3.3",
+    "zone.js": "~0.8.26"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.10.0",

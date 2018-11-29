@@ -1,8 +1,9 @@
 fs = require('fs');
 
+
 var VendorEntity=require('../../model/vendor-entity')
 var ImageFolderPath=require('../../config/image-folder-path')
-
+var EmailService=require('../../service/email-service')
 
 module.exports.findProfilePic=(req,res)=> {
    //var _id=req.query.id;
@@ -77,6 +78,7 @@ module.exports.saveVendor =(req,res)=>{
                   console.log(err);
                   return res.status(200).json({status:"fail",message:"couldn't save to database"});
                }else{
+                  EmailService.sendVendorRegEmail(vendor.email);
                   return res.status(200).json({status:"success",message:"vendor sucessfully saved"})
                }
             }); //end of save entity

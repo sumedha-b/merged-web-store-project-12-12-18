@@ -17,8 +17,8 @@ export class VendorListComponent implements OnInit {
   ngOnInit() {
     this.vendorService.findVendors().subscribe(vendors =>{
       this.vendorList=vendors
-    
     });
+    
     //let v1=new Vendor();
     ///v1.vcode="V02102";
     ///v1.name="ABC TECH";
