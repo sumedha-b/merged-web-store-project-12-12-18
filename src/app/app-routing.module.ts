@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: 'auth-user', component: LoginComponent},
   { path: 'category', component: CategoryComponent},
   { path: 'product-list', component: ListProductsComponent},
-  { path: 'product-details', component: ProductDetailsComponent},
+  { path: 'product-details/:id', component: ProductDetailsComponent},
   { path: 'upload-product', component: AddProductComponent},
   { path: 'sellers-products', component: SellersProductsComponent},
   { path: 'checkout', component: CheckoutComponent},
