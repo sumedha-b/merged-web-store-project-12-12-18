@@ -6,6 +6,7 @@ module.exports=function(endPoint){
     //@RequestMapping(value="profiles",method=RequestMethod.POST)
     endPoint.get("/admin/products",ProductController.findProducts);
     endPoint.get("/admin/products/:pid",ProductController.getProduct);
+    endPoint.get("/admin/products/image/:imageUrl",ProductController.getImage);
     endPoint.post("/admin/products",ProductController.postProducts);
     
 };

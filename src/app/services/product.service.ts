@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AppConfig } from '../config/app.config';
 import { Product } from '../model/product';
@@ -12,10 +12,26 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  public uploadProduct(data):Observable<any>{
+  public uploadProduct(data:Product, selectedFile:File):Observable<any>{
     const httpOptions = {headers:new HttpHeaders({'Content-Type':'application/json'})};
     const endpoint = AppConfig.PRODUCT_ENDPOINT;
-    return this.http.post(endpoint,data,httpOptions);
+
+    let formdata: FormData = new FormData();
+    
+    Object.keys(data).map((key)=>{
+      if(key == 'techSpecs'){
+        formdata.append(key,JSON.stringify(data[key]));
+      }else{
+        formdata.append(key,data[key]+"");
+      }
+        
+    });
+
+    formdata.append('photo',selectedFile);
+
+    const req = new HttpRequest('POST',endpoint,formdata,{reportProgress: true,responseType:'text'});
+
+    return this.http.request(req);
   }
 
   public getProducts():Observable<Product[]>{

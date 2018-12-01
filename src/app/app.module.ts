@@ -45,6 +45,7 @@ import { FormsModule } from '@angular/forms';
 import { AddVendorComponent } from './components/vendor/add-vendor/add-vendor.component';
 import { VendorListComponent } from './components/vendor/vendor-list/vendor-list.component';
 import { VendorDetailsComponent } from './components/vendor/vendor-details/vendor-details.component';
+import { ScartComponent } from './components/scart/scart.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +89,8 @@ import { VendorDetailsComponent } from './components/vendor/vendor-details/vendo
     PageNotFoundComponent,
     AddVendorComponent,
     VendorListComponent,
-    VendorDetailsComponent
+    VendorDetailsComponent,
+    ScartComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/model/product';
+import { AppConfig } from 'src/app/config/app.config';
 
 @Component({
   selector: 'app-list-products',
@@ -14,9 +15,11 @@ export class ListProductsComponent implements OnInit {
   products:Product[];
   fillstar:number[] = [3,3,3];
   emptystar:number[] = [3,3];
+  url = AppConfig.PRODUCT_ENDPOINT + "/image";
   ngOnInit() {
     this.productService.getProducts().subscribe(data => {
       this.products = data;
+      console.log(data);
     }); 
   }
 

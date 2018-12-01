@@ -38,10 +38,14 @@
             searchPopup.addClass('active');
            bodyOvrelay.addClass('active');
         });
+
+		// comment this out so we remove from cart manually with angular
+        /*
         $(document).on('click','.remove-cart',function(e){
             e.preventDefault();
             $(this).parent().parent().hide(1000);
         });
+        */ 
 
         /*--------------------
             wow js init

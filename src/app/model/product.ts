@@ -1,3 +1,5 @@
+import { TechSpec } from "./techSpec";
+
 export class Product{
     pid:string;
     sku:string;
@@ -24,5 +26,5 @@ export class Product{
     description:string;
     features:string;
     reviews:string;
-    techSpecs:string;  
+    techSpecs:TechSpec[]=[];  
 }

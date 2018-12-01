@@ -28,13 +28,7 @@
                   <div class="left-content-area"><!-- left content area -->
                       <div class="product-details-slider" id="product-details-slider" data-slider-id="1">
                           <div class="single-product-thumb">
-                              <img src="assets/img/product-details/01.jpg" alt="product details image">
-                          </div>
-                          <div class="single-product-thumb">
-                              <img src="assets/img/product-details/02.jpg" alt="product details image">
-                          </div>
-                          <div class="single-product-thumb">
-                              <img src="assets/img/product-details/03.jpg" alt="product details image">
+                              <img src="{{url}}/{{product.imageUrl}}" alt="product details image">
                           </div>
                       </div>
 
@@ -58,8 +52,8 @@
                           <h3 class="title">{{product.title}}</h3>
                           <div class="price-area">
                               <div class="left">
-                                      <span class="sprice">${{product.price}}</span>
-                                      <span class="dprice"><del>${{product.sprice}}</del></span>
+                                      <span class="sprice">${{product.sprice}}</span>
+                                      <span class="dprice"><del>${{product.price}}</del></span>
                               </div>
                               <div class="right">
                                   <a href="#" class="size">size chart</a>
@@ -118,112 +112,10 @@
                               <div class="item_review_content">
                                   <h4 class="title">Technical Specifications</h4>
                                   <ul class="product-specification"><!-- product specification -->
-                                      <li>
+                                      <li *ngFor = "let p of product.techSpecs">
                                           <div class="single-spec"><!-- single specification -->
-                                              <span class="heading">Brand</span>
-                                              <span class="details">Apple</span>
-                                          </div>
-                                      </li>
-                                      <li>
-                                          <div class="single-spec"><!-- single specification -->
-                                              <span class="heading">Item Height</span>
-                                              <span class="details">18 Millimeters</span>
-                                          </div>
-                                      </li>
-                                      <li>
-                                          <div class="single-spec"><!-- single specification -->
-                                              <span class="heading">Item Width</span>
-                                              <span class="details">31.4 Centimeters</span>
-                                          </div>
-                                      </li>
-                                      <li>
-                                          <div class="single-spec"><!-- single specification -->
-                                              <span class="heading">Screen Size</span>
-                                              <span class="details">13 Inches</span>
-                                          </div>
-                                      </li>
-                                      <li>
-                                          <div class="single-spec"><!-- single specification -->
-                                              <span class="heading">Item Weight</span>
-                                              <span class="details">1.6 Kg</span>
-                                          </div>
-                                      </li>
-                                      <li>
-                                          <div class="single-spec"><!-- single specification -->
-                                              <span class="heading">Product Dimensions</span>
-                                              <span class="details">21.9 x 31.4 x 1.8 cm</span>
-                                          </div>
-                                      </li>
-                                      <li>
-                                          <div class="single-spec"><!-- single specification -->
-                                              <span class="heading">Item model number</span>
-                                              <span class="details">MF841HN/A</span>
-                                          </div>
-                                      </li>
-                                      <li>
-                                          <div class="single-spec"><!-- single specification -->
-                                              <span class="heading">Processor Brand</span>
-                                              <span class="details">Intel</span>
-                                          </div>
-                                      </li>
-                                      <li>
-                                          <div class="single-spec"><!-- single specification -->
-                                              <span class="heading">Processor Type</span>
-                                              <span class="details">Core i5</span>
-                                          </div>
-                                      </li>
-                                      <li>
-                                          <div class="single-spec"><!-- single specification -->
-                                              <span class="heading">Processor Speed</span>
-                                              <span class="details">2.9 GHz</span>
-                                          </div>
-                                      </li>
-                                      <li>
-                                          <div class="single-spec"><!-- single specification -->
-                                              <span class="heading">RAM Size</span>
-                                              <span class="details">8 GB</span>
-                                          </div>
-                                      </li>
-                                      <li>
-                                          <div class="single-spec"><!-- single specification -->
-                                              <span class="heading">Hard Drive Size</span>
-                                              <span class="details">512 GB</span>
-                                          </div>
-                                      </li>
-                                      <li>
-                                          <div class="single-spec"><!-- single specification -->
-                                              <span class="heading">Hard Disk Technology</span>
-                                              <span class="details">Solid State Drive</span>
-                                          </div>
-                                      </li>
-                                      <li>
-                                          <div class="single-spec"><!-- single specification -->
-                                              <span class="heading">Graphics Coprocessor</span>
-                                              <span class="details">Intel Integrated Graphics</span>
-                                          </div>
-                                      </li>
-                                      <li>
-                                          <div class="single-spec"><!-- single specification -->
-                                              <span class="heading">Graphics Card Description</span>
-                                              <span class="details">Integrated Graphics Card</span>
-                                          </div>
-                                      </li>
-                                      <li>
-                                          <div class="single-spec"><!-- single specification -->
-                                              <span class="heading">Hardware Platform</span>
-                                              <span class="details">Mac</span>
-                                          </div>
-                                      </li>
-                                      <li>
-                                          <div class="single-spec"><!-- single specification -->
-                                              <span class="heading">Operating System</span>
-                                              <span class="details">Mac OS</span>
-                                          </div>
-                                      </li>
-                                      <li>
-                                          <div class="single-spec"><!-- single specification -->
-                                              <span class="heading">Average Battery Life (in hours)</span>
-                                              <span class="details">9</span>
+                                              <span class="heading">{{p.itemAttribute}}</span>
+                                              <span class="details">{{p.itemValue}}</span>
                                           </div>
                                       </li>
                                   </ul><!-- //.product specification -->
@@ -232,53 +124,14 @@
                           <div class="tab-pane fade" id="descr" role="tabpanel" aria-labelledby="descr-tab">
                               <div class="descr-tab-content">
                                   <h4 class="title">Product Descriptions</h4>
-                                  <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem
-                                      Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
-                                      <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncove
-                                          many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour
-                                          and the like) Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum
-                                          will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose
-                                          (injected humour and the like)..</p>
+                                  <p>{{product.description}}.</p>
                               </div>
                           </div>
                           <div class="tab-pane fade" id="method" role="tabpanel" aria-labelledby="method-tab">
                               <div class="more-feature-content">
                                   <h4 class="title">More Features</h4>
                                   <div class="feature-list-wrapper">
-                                      <div class="row">
-                                          <div class="col-lg-3 col-md-6">
-                                              <ul class="features-list">
-                                                  <li><i class="fas fa-check"></i> 24/7 Online Support</li>
-                                                  <li><i class="fas fa-check"></i> 24/7 Online Support</li>
-                                                  <li><i class="fas fa-check"></i> 24/7 Online Support</li>
-                                                  <li><i class="fas fa-check"></i> 24/7 Online Support</li>
-                                              </ul>
-                                          </div>
-                                          <div class="col-lg-3 col-md-6">
-                                              <ul class="features-list">
-                                                  <li><i class="fas fa-check"></i> Unlimited Features</li>
-                                                  <li><i class="fas fa-check"></i> Unlimited Features</li>
-                                                  <li><i class="fas fa-check"></i> Unlimited Features</li>
-                                                  <li><i class="fas fa-check"></i> Unlimited Features</li>
-                                              </ul>
-                                          </div>
-                                          <div class="col-lg-3 col-md-6">
-                                              <ul class="features-list">
-                                                  <li><i class="fas fa-check"></i> 100% Pure cotton</li>
-                                                  <li><i class="fas fa-check"></i> 100% Pure cotton</li>
-                                                  <li><i class="fas fa-check"></i> 100% Pure cotton</li>
-                                                  <li><i class="fas fa-check"></i> 100% Pure cotton</li>
-                                              </ul>
-                                          </div>
-                                          <div class="col-lg-3 col-md-6">
-                                              <ul class="features-list">
-                                                  <li><i class="fas fa-check"></i> Simple and easy</li>
-                                                  <li><i class="fas fa-check"></i> Simple and easy</li>
-                                                  <li><i class="fas fa-check"></i> Simple and easy</li>
-                                                  <li><i class="fas fa-check"></i> Simple and easy</li>
-                                              </ul>
-                                          </div>
-                                      </div>
+                                      {{product.features}}
                                   </div>
                                   <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncove
                                       many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour

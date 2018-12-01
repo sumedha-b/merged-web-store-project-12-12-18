@@ -1,5 +1,6 @@
-
+fs = require('fs')
 var ProductEntity=require('../../model/product-entity')
+var ImageFolderPath = require('../../config/image-folder-path')
 
  module.exports.findProducts=(req,res)=> {
    console.log("@@@@@@@@@@@product@@@@@@@@@@@@@@");
@@ -10,21 +11,51 @@ var ProductEntity=require('../../model/product-entity')
 
 }
 
+module.exports.getImage = (req,res) =>{
+   console.log('its routing');
+   var url = req.params.imageUrl;
+   var imagePath = appRoot  + "/" +  ImageFolderPath.PRODUCTS_IMAGES +"/" + url;
+   fs.readFile(imagePath,(err,data)=>{
+      
+      if (err){
+         console.log(err)
+         return res.status(500).json({status:"fail",message:"Sorry!! image not found"});
+      }
+      res.writeHead(200,{'Content-Type':'image/jpeg'});
+      res.end(data);
+   });
+}
+
 module.exports.postProducts =(req,res)=>{
    var product = req.body;
    var productEntity = new ProductEntity();
 
+   let pphoto = req.files.photo;
    for (key in product){
       productEntity[key] = product[key];
    }
 
-   productEntity.save(err =>{
+   var imgext = pphoto.name.substring(pphoto.name.length-4);
+   var pphototName = product.pid+"product"+imgext;
+   
+   productEntity.imageUrl = pphototName;
+   console.log(appRoot + "/" + productEntity.imageUrl);
+   pphoto.mv(appRoot + "/" + ImageFolderPath.PRODUCTS_IMAGES + "/" +productEntity.imageUrl, function(err){
       if(err){
-         return res.status(200).json({status:"fail",message:"couldn't save to database"});
+         console.log(err);  
+         return res.status(500).json({status:"fail",message:"Sorry!! product profile image is not save"});
       }else{
-         return res.status(200).json({status:"success",message:"product sucessfully saved"})
+         productEntity.save(err =>{
+               if(err){
+                  console.log(err);
+                  return res.status(200).json({status:"fail",message:"couldn't save to database"});
+               }else{
+                  return res.status(200).json({status:"success",message:"product sucessfully saved"})
+               }
+            });
       }
-   })
+   });
+   
 
 }
 

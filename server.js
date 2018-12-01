@@ -8,6 +8,18 @@ const fileUpload = require('express-fileupload');
 var https = require('https');
 var fs = require('fs');
 
+//Sending email here
+////var mail = require('./rest-api/service/node-mailer-with-template');
+/**
+* Don't forget to change your receipient details here
+* I need to modeify this as most people who followed this tutorial always end up sending mail to me instead
+*/
+var receiver = 'nagendra.synergisticit@gmail.com';
+var username = 'theuser';
+var name = 'Joshua';
+var passwordToken = 'http://synergisticit.com/some-password-links';
+//mail.sendPasswordReset(receiver, username, name, passwordToken);
+
 var path = require('path');
 var appDir = path.dirname(require.main.filename);
 global.appRoot=appDir;
