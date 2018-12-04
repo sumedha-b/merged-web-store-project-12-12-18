@@ -1,9 +1,28 @@
+//Sending email here
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
+const nodemailer = require('nodemailer'),
+    //creds = require('./creds'),
+    transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'synergisticit2020@gmail.com',
+            pass: 'synergisticit2020@123',
+        },
+    }),
+    EmailTemplate = require('email-templates').EmailTemplate,
+    path = require('path'),
+    Promise = require('bluebird');
+
+
 fs = require('fs');
 
 
 var VendorEntity=require('../../model/vendor-entity')
 var ImageFolderPath=require('../../config/image-folder-path')
-var EmailService=require('../../service/email-service')
+var AppConfig=require('../../config/app.config')
+
+var VendorMail=require('../../service/vendor-mail');
 
 module.exports.findProfilePic=(req,res)=> {
    //var _id=req.query.id;
@@ -44,7 +63,7 @@ module.exports.findProfilePic=(req,res)=> {
 }
 
 module.exports.saveVendor =(req,res)=>{
-   console.log("___________________");
+   console.log("________ttttttttttpppppptttttttttttt___________");
    //console.log(req);
    var vendor = req.body;
    console.log(vendor);
@@ -78,7 +97,40 @@ module.exports.saveVendor =(req,res)=>{
                   console.log(err);
                   return res.status(200).json({status:"fail",message:"couldn't save to database"});
                }else{
-                  EmailService.sendVendorRegEmail(vendor.email);
+                  let cdata = [
+                     {
+                         vendorName: vendor.name,
+                         email: vendor.email,
+                         vendorId: vendor.vcode,
+                         cemail: AppConfig.cemail,
+                         companyName: AppConfig.cname,
+                     }, {
+                        vendorName: vendor.name,
+                        email: vendor.email,
+                        vendorId: vendor.vcode,
+                        cemail: AppConfig.cemail,
+                        companyName: AppConfig.cname,
+                    }];
+                  console.log("Sending email for 1111111vendor!!!!!!!!!!!!!");
+                  console.log(cdata);
+                 
+                  //Code to send email
+                  loadTemplate('vendor', cdata).then((results) => {
+                     return Promise.all(results.map((result) => {
+                         sendEmail({
+                             to: result.context.email,
+                             from: 'Shopping Cart!!!!!!!!',
+                             subject: result.email.subject,
+                             html: result.email.html,
+                             text: result.email.text,
+                         });
+                     }));
+                  }).then(() => {
+                     console.log('Yay!');
+                  });
+                  
+                 
+                  //VendorMail.sendEmail(cdata);
                   return res.status(200).json({status:"success",message:"vendor sucessfully saved"})
                }
             }); //end of save entity
@@ -187,4 +239,29 @@ module.exports.editVendorById =(req,res)=>{
    );
 
 }
+
+
+function sendEmail (obj) {
+   return transporter.sendMail(obj);
+}
+
+function loadTemplate (templateName, contexts) {
+   console.log("loadTemplate is called!");
+   console.log(templateName);
+   console.log(contexts);
+   let template = new EmailTemplate(path.join(appRoot, 'templates', templateName));
+   return Promise.all(contexts.map((context) => {
+       return new Promise((resolve, reject) => {
+           template.render(context, (err, result) => {
+               if (err) reject(err);
+               else resolve({
+                   email: result,
+                   context,
+               });
+           });
+       });
+   }));
+}
+
+
 

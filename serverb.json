@@ -1,12 +1,69 @@
 //this is starting point of the program!
 //I have to configure Node.js as a server
 var express = require('express'); //we have just installed
+var EmailConfig=require('./rest-api/config/email-service');
 var http = require('http'); //This comes with Node.js
 var bodyParser=require('body-parser');
 var RESTAPI=require('./rest-api/config/rest-api-constant');
 const fileUpload = require('express-fileupload');
 var https = require('https');
 var fs = require('fs');
+var app = express(); //Instantiating Express
+app.set('port', process.env.PORT || 4000);
+
+var receiver = 'nagendra.synergisticit@gmail.com';
+var username = 'theuser';
+var name = 'Joshua';
+var passwordToken = 'http://synergisticit.com/some-password-links';
+
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+app.set('view engine', 'ejs');
+
+var EmailTemplate = require('email-templates');
+var nodemailer = require('nodemailer');
+
+//var smtpTransport = require('nodemailer-smtp-transport');
+
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: EmailConfig.username,
+      pass: EmailConfig.password
+    }
+  });
+
+function sendMail(){
+//create the path of email template folder 
+    var templateDir = path.join(__dirname, "../", 'templates', 'testMailTemplate');
+    var testMailTemplate = new EmailTemplate(templateDir)
+      
+    var locals = {
+        userName: "NAGENDRA KUMAR" //dynamic data for bind into the template
+    };
+
+    testMailTemplate.render(JSON.stringify(locals), function (err, temp) {
+        if (err) {
+            console.log("error", err);
+   
+        } else {
+                transporter.sendMail({
+                    from: 'synergisticit2020@gmail.com',
+                    to: 'nagen@synergisticit,nagendra.synergisticit@gmail.com',
+                    subject: "Regarding Email Confirmation from Shopping Cart!",
+                    text: temp.text,
+                    html:  temp.html
+                }, function (error, info) {
+                    if (error) {
+                    console.log(error);
+                    }
+                    console.log('Message sent: ' + info.response);
+                })
+        }
+    })
+}
+
+
 
 var path = require('path');
 var appDir = path.dirname(require.main.filename);
@@ -15,8 +72,7 @@ console.log("appDir = "+appDir);
 
 
 
-var app = express(); //Instantiating Express
-app.set('port', process.env.PORT || 4000);
+
 
 //To allow access of this data from different domain
 //Access to XMLHttpRequest at 'http://localhost:4000/v3/profiles' from origin 'http://localhost:4200' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
@@ -88,6 +144,9 @@ http.createServer(app).listen(app.get('port'), function(){
     console.log('...........NodeJS server listening on port.......... ' + app.get('port'));
     console.log('...........NodeJS server listening on port.......... ' + app.get('port'));
     console.log('...........NodeJS server listening on port.......... ' + app.get('port'));
+    console.log('...........Sending email now');
+    
+    sendMail();
    
 });
 
