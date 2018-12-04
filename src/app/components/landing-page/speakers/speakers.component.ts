@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./speakers.component.css']
 })
 export class SpeakersComponent implements OnInit {
+  color:string="red";
+  private price:number=150;
 
   constructor() { }
 

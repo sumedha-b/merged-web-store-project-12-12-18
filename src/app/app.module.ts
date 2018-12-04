@@ -46,6 +46,8 @@ import { AddVendorComponent } from './components/vendor/add-vendor/add-vendor.co
 import { VendorListComponent } from './components/vendor/vendor-list/vendor-list.component';
 import { VendorDetailsComponent } from './components/vendor/vendor-details/vendor-details.component';
 import { ScartComponent } from './components/scart/scart.component';
+import { ChangeColorDirective } from './directives/change-color.directive';
+import { CcurrencyPipe } from './pipes/ccurrency.pipe';
 
 @NgModule({
   declarations: [
@@ -90,7 +92,9 @@ import { ScartComponent } from './components/scart/scart.component';
     AddVendorComponent,
     VendorListComponent,
     VendorDetailsComponent,
-    ScartComponent
+    ScartComponent,
+    ChangeColorDirective,
+    CcurrencyPipe
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,9 @@
             <div class="col-lg-8">
                 <div class="section-title rubik-font home-3"><!--  -->
                      <span class="subtitle">get 50% offer</span>
-                     <h2 class="title">JBL Speakers</h2>
+                     <h2 class="title" [appChangeColor]="color">JBL Speakers</h2>
+                     <p>Price  : {{price | currency}}</p>
+                     <p>Price  : {{price | ccurrency:1}}</p>
                      <p>Stock up on sportswear and limited edition collections on our awesome mid-season sale.</p>
                 </div>
             </div>
