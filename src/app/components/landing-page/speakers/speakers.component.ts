@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Advertisement } from 'src/app/model/advertisement';
+import { AdvertisementService } from 'src/app/services/advertisement.service';
 
 @Component({
   selector: 'app-speakers',
@@ -6,12 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./speakers.component.css']
 })
 export class SpeakersComponent implements OnInit {
-  color:string="red";
-  private price:number=150;
 
-  constructor() { }
+  private adDetials:Advertisement;
+  private adLoaded:Promise<Boolean>;
+
+  constructor(private advertisementService:AdvertisementService) {
+    this.advertisementService.findAdById("A123").subscribe(data=>{
+      this.adDetials=data;
+      this.adLoaded=Promise.resolve(true);
+    });
+  }
 
   ngOnInit() {
+    
   }
 
 }

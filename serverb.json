@@ -127,6 +127,9 @@ require('./rest-api/utils/mongodb-utils')();
 var dataPusher=require('./rest-api/utils/login-data-pusher');
 dataPusher();
 
+
+
+
 //This is acting as middleware
 //require('./rest-api/security/validate-token')(endPoint);
 

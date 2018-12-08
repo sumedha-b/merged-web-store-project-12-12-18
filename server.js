@@ -71,6 +71,11 @@ require('./rest-api/utils/mongodb-utils')();
 var dataPusher=require('./rest-api/utils/login-data-pusher');
 dataPusher();
 
+
+var adDataPusher=require('./rest-api/utils/ad-data-pusher');
+adDataPusher();
+require('./rest-api/utils/product-data-pusher')();
+
 //This is acting as middleware
 //require('./rest-api/security/validate-token')(endPoint);
 
@@ -78,6 +83,7 @@ dataPusher();
 require('./rest-api/router/profile-router')(endPoint);
 require('./rest-api/router/product-router')(endPoint);
 require('./rest-api/router/vendor-router')(endPoint);
+require('./rest-api/router/ad-router')(endPoint);
 //here endpoint will be prefix with  v1
 app.use(RESTAPI.REST_VERSION, endPoint);
 

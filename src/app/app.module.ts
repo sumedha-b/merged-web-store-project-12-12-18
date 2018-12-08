@@ -49,8 +49,20 @@ import { ScartComponent } from './components/scart/scart.component';
 import { ChangeColorDirective } from './directives/change-color.directive';
 import { CcurrencyPipe } from './pipes/ccurrency.pipe';
 
+import { AdvertisementComponent } from './components/landing-page/new-product-area/advertisement/advertisement.component';
+import { SecondAdvertisementComponent } from './components/landing-page/new-product-area/second-advertisement/second-advertisement.component';
+import { ProductDetailsCellComponent } from './components/landing-page/new-product-area/product-details-cell/product-details-cell.component';
+import { ShowHideDirective } from './directives/show-hide.directive';
+import { OfferAddComponent } from './components/landing-page/offer-add/offer-add.component';
+import { BestCustomerSellerComponent } from './components/landing-page/best-customer-seller/best-customer-seller.component';
+
+
+
 @NgModule({
   declarations: [
+    AdvertisementComponent,
+    SecondAdvertisementComponent,
+    ProductDetailsCellComponent,
     AppComponent,
     HeaderComponent,
     FooterComponent,
@@ -94,7 +106,10 @@ import { CcurrencyPipe } from './pipes/ccurrency.pipe';
     VendorDetailsComponent,
     ScartComponent,
     ChangeColorDirective,
-    CcurrencyPipe
+    CcurrencyPipe,
+    ShowHideDirective,
+    OfferAddComponent,
+    BestCustomerSellerComponent
   ],
   imports: [
     BrowserModule,

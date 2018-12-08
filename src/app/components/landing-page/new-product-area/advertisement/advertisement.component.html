@@ -1,0 +1,44 @@
+<a href="#">
+    <div *ngIf="adLoaded | async"> <!-- if the observable has finished subscribing -->
+        <div class="single-offer-item-tall"><!-- single offer item tall -->
+        <div class="thumb">
+            <img src="{{adDetails.imageUrl}}" alt="offered image">
+        </div>
+
+     
+        <div class="content" *showHide="status">
+            <span class="subtitle">{{adDetails.subtitle}}</span>
+            <div class="countdown-area">
+                <ul>
+                    <li>
+                            <div class="single-countdown-box"><!-- single countdown box -->
+                                <span class="time" id="chour">{{hours}}</span>
+                                <span class="name">hr</span>
+                            </div><!-- //.single countdown box -->
+                    </li>
+                    <li>
+                        <div class="single-countdown-box"><!-- single countdown box -->
+                            <span class="time" id="cmin">{{minutes}}</span>
+                            <span class="name">min</span>
+                        </div><!-- //.single countdown box -->
+                    </li>
+                    <li>
+                        <div class="single-countdown-box"><!-- single countdown box -->
+                            <span class="time" id="csec">{{seconds}}</span>
+                            <span class="name">Sec</span>
+                        </div><!-- //.single countdown box -->
+                    </li>
+                </ul>
+            </div>
+            <h4 class="title">{{adDetails.title}}</h4>
+            <div class="price"><span class="sprice">{{adDetails.orgPrice}}</span> <del class="dprice">{{adDetails.discountPrice}}</del></div>
+        </div>
+       
+
+         <div><!-- hidden field to input the end date for the countdown timer -->
+            <input type="hidden" id="endDate" value="{{adDetails.endDate}}">
+        </div>
+
+        </div><!-- //.single oofer item tall -->
+    </div>
+</a>

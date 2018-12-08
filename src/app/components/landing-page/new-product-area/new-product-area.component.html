@@ -1,355 +1,57 @@
 <br/><br/>
 <div class="trending-seller-area home-6">
     <div class="container">
+
         <div class="row">
             <div class="col-lg-3 col-md-12">
-                <div class="single-offer-item-tall"><!-- single offer item tall -->
-                    <div class="thumb">
-                        <img src="assets/img/product-offer/01.jpg" alt="offered image">
-                    </div>
-                    <div class="content">
-                        <span class="subtitle">Hurry Up! Offer ends in:</span>
-                        <div class="countdown-area">
-                            <ul>
-                                <li>
-                                    <div class="single-countdown-box"><!-- single countdown box -->
-                                        <span class="time" id="chour">03</span>
-                                        <span class="name">Hor</span>
-                                    </div><!-- //.single countdown box -->
-                                </li>
-                                <li>
-                                    <div class="single-countdown-box"><!-- single countdown box -->
-                                        <span class="time" id="cmin">16</span>
-                                        <span class="name">min</span>
-                                    </div><!-- //.single countdown box -->
-                                </li>
-                                <li>
-                                    <div class="single-countdown-box"><!-- single countdown box -->
-                                        <span class="time" id="csec">46</span>
-                                        <span class="name">Sec</span>
-                                    </div><!-- //.single countdown box -->
-                                </li>
-                            </ul>
-                        </div>
-                        <a href="#"><h4 class="title">Game Console Controller + USB 3.0 Cable</h4></a>
-                        <div class="price"><span class="sprice">$400</span> <del class="dprice">$570</del></div>
-                    </div>
-                </div><!-- //.single oofer item tall -->
-                <div class="single-offer-banner"><!-- single offer item tall -->
-                    <a href="#">
-                        <div class="img-wrapper">
-                            <img src="assets/img/banner-add/06.jpg" alt="banner image">
-                        </div>
-                    </a>
-                </div><!-- //.single oofer item tall -->
+                <app-advertisement></app-advertisement>
+                <app-second-advertisement></app-second-advertisement>
             </div>
+
             <div class="col-lg-9 ">
                 <div class="home-six-trending-seller-filter"><!-- home six trending seller filter -->
                    <div class="row">
-                       <div class="col-lg-12">
-                        <div class="home-six-trending-sellter-filter-nav">
+                        <div class="col-lg-12">
+
+                            <div class="home-six-trending-sellter-filter-nav">
                                 <ul class="nav nav-tabs"  role="tablist">
-                                    <li class="nav-item">
+                                    <!-- <li class="nav-item">
                                         <a class="nav-link active" id="bestseller-tab" data-toggle="tab" href="#bestseller" role="tab" aria-controls="bestseller" aria-selected="true">best sellers</a>
+                                    </li> -->
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="hotdeals-tab" data-toggle="tab" href="#hotdeals" role="tab" aria-controls="hotdeals" aria-selected="true">hot deals</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="trendeseller-tab" data-toggle="tab" href="#trendeseller" role="tab" aria-controls="trendeseller" aria-selected="false">trending sellers</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">new sellers</a>
+                                        <a class="nav-link" id="trendproduct-tab" data-toggle="tab" href="#trendproduct" role="tab" aria-controls="trendproduct" aria-selected="false">trending products</a>
                                     </li>
                                 </ul> 
-                        </div>
-                        <div class="home-six-trending-masonry">
+                            </div>
+
+                            <div class="home-six-trending-masonry">
                                 <div class="tab-content" >
-                                    <div class="tab-pane fade show active" id="bestseller" role="tabpanel" aria-labelledby="bestseller-tab">
-                                        <div class="row">
-                                                <div class="col-lg-4 col-md-6">
-                                                        <div class="single-new-collection-item"><!-- single new collections -->
-                                                            <div class="thumb">
-                                                                <img src="assets/img/product-offer/02.jpg" alt="new collcetion image">
-                                                                <div class="hover">
-                                                                    <a (click)="addToCart(1)" href="#" class="addtocart">Add To Cart</a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="content">
-                                                                <span class="category">Sportswear</span>
-                                                                <a href="#"><h4 class="title">Black Tshirt Brock</h4></a>
-                                                                <div class="price"><span class="sprice">$23.00</span> <del class="dprice">$45.00</del></div>
-                                                            </div>
-                                                        </div><!-- //. single new collections  -->
-                                                    </div>
-                                                    <div class="col-lg-4 col-md-6">
-                                                        <div class="single-new-collection-item"><!-- single new collections -->
-                                                            <div class="thumb">
-                                                                <img src="assets/img/product-offer/03.jpg" alt="new collcetion image">
-                                                                <div class="hover">
-                                                                    <a (click)="addToCart(2)" href="#" class="addtocart">Add To Cart</a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="content">
-                                                                <span class="category">shoe</span>
-                                                                <a href="#"><h4 class="title">Footwear Dark</h4></a>
-                                                                <div class="price"><span class="sprice">$56.00</span> <del class="dprice">$78.00</del></div>
-                                                            </div>
-                                                        </div><!-- //. single new collections  -->
-                                                    </div>
-                                                    <div class="col-lg-4 col-md-6">
-                                                        <div class="single-new-collection-item"><!-- single new collections -->
-                                                            <div class="thumb">
-                                                                <img src="assets/img/product-offer/04.jpg" alt="new collcetion image">
-                                                                <div class="hover">
-                                                                    <a href="#" class="addtocart">Add To Cart</a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="content">
-                                                                <span class="category">accesories</span>
-                                                                <a href="#"><h4 class="title">Milo Hoverboard</h4></a>
-                                                                <div class="price"><span class="sprice">$83.00</span> <del class="dprice">$120.00</del></div>
-                                                            </div>
-                                                        </div><!-- //. single new collections  -->
-                                                    </div>
-                                                    <div class="col-lg-4 col-md-6">
-                                                        <div class="single-new-collection-item"><!-- single new collections -->
-                                                            <div class="thumb">
-                                                                <img src="assets/img/product-offer/05.jpg" alt="new collcetion image">
-                                                                <div class="hover">
-                                                                    <a href="#" class="addtocart">Add To Cart</a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="content">
-                                                                <span class="category">hat</span>
-                                                                <a href="#"><h4 class="title">Red Yello Hat</h4></a>
-                                                                <div class="price"><span class="sprice">$89.00</span> <del class="dprice">$100.00</del></div>
-                                                            </div>
-                                                        </div><!-- //. single new collections  -->
-                                                    </div>
-                                                    <div class="col-lg-4 col-md-6">
-                                                        <div class="single-new-collection-item"><!-- single new collections -->
-                                                            <div class="thumb">
-                                                                <img src="assets/img/product-offer/06.jpg" alt="new collcetion image">
-                                                                <div class="hover">
-                                                                    <a href="#" class="addtocart">Add To Cart</a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="content">
-                                                                <span class="category">Cycle</span>
-                                                                <a href="#"><h4 class="title">Minimal Cycle</h4></a>
-                                                                <div class="price"><span class="sprice">$700.00</span> <del class="dprice">$1200.00</del></div>
-                                                            </div>
-                                                        </div><!-- //. single new collections  -->
-                                                    </div>
-                                                    <div class="col-lg-4 col-md-6">
-                                                        <div class="single-new-collection-item"><!-- single new collections -->
-                                                            <div class="thumb">
-                                                                <img src="assets/img/product-offer/07.jpg" alt="new collcetion image">
-                                                                <div class="hover">
-                                                                    <a href="#" class="addtocart">Add To Cart</a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="content">
-                                                                <span class="category">bike</span>
-                                                                <a href="#"><h4 class="title">Dart Motao Bike</h4></a>
-                                                                <div class="price"><span class="sprice">$800.00</span> <del class="dprice">$1000.00</del></div>
-                                                            </div>
-                                                        </div><!-- //. single new collections  -->
-                                                    </div>
-                                        </div>
+                                    <!-- <div class="tab-pane fade show active" id="bestseller" role="tabpanel" aria-labelledby="bestseller-tab">
+                                        <app-product-details-cell></app-product-details-cell>
+                                    </div> -->
+                                    
+                                    <div class="tab-pane fade show active" id="hotdeals" role="tabpanel" aria-labelledby="hotdeals-tab">
+                                        <!-- <div class="row"> -->
+                                            <app-product-details-cell *ngFor="let item of hotDealsProducts" [productItem]="item"></app-product-details-cell>
+                                        <!-- </div> -->
                                     </div>
-                                    <div class="tab-pane fade" id="trendeseller" role="tabpanel" aria-labelledby="trendeseller-tab">
-                                            <div class="row">
-                                                <div class="col-lg-4 col-md-6">
-                                                    <div class="single-new-collection-item"><!-- single new collections -->
-                                                        <div class="thumb">
-                                                            <img src="assets/img/product-offer/02.jpg" alt="new collcetion image">
-                                                            <div class="hover">
-                                                                <a href="#" class="addtocart">Add To Cart</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="content">
-                                                            <span class="category">Sportswear</span>
-                                                            <a href="#"><h4 class="title">Black Tshirt Brock</h4></a>
-                                                            <div class="price"><span class="sprice">$23.00</span> <del class="dprice">$45.00</del></div>
-                                                        </div>
-                                                    </div><!-- //. single new collections  -->
-                                                </div>
-                                                <div class="col-lg-4 col-md-6">
-                                                    <div class="single-new-collection-item"><!-- single new collections -->
-                                                        <div class="thumb">
-                                                            <img src="assets/img/product-offer/03.jpg" alt="new collcetion image">
-                                                            <div class="hover">
-                                                                <a href="#" class="addtocart">Add To Cart</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="content">
-                                                            <span class="category">shoe</span>
-                                                            <a href="#"><h4 class="title">Footwear Dark</h4></a>
-                                                            <div class="price"><span class="sprice">$56.00</span> <del class="dprice">$78.00</del></div>
-                                                        </div>
-                                                    </div><!-- //. single new collections  -->
-                                                </div>
-                                                <div class="col-lg-4 col-md-6">
-                                                    <div class="single-new-collection-item"><!-- single new collections -->
-                                                        <div class="thumb">
-                                                            <img src="assets/img/product-offer/04.jpg" alt="new collcetion image">
-                                                            <div class="hover">
-                                                                <a href="#" class="addtocart">Add To Cart</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="content">
-                                                            <span class="category">accesories</span>
-                                                            <a href="#"><h4 class="title">Milo Hoverboard</h4></a>
-                                                            <div class="price"><span class="sprice">$83.00</span> <del class="dprice">$120.00</del></div>
-                                                        </div>
-                                                    </div><!-- //. single new collections  -->
-                                                </div>
-                                                <div class="col-lg-4 col-md-6">
-                                                    <div class="single-new-collection-item"><!-- single new collections -->
-                                                        <div class="thumb">
-                                                            <img src="assets/img/product-offer/05.jpg" alt="new collcetion image">
-                                                            <div class="hover">
-                                                                <a href="#" class="addtocart">Add To Cart</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="content">
-                                                            <span class="category">hat</span>
-                                                            <a href="#"><h4 class="title">Red Yello Hat</h4></a>
-                                                            <div class="price"><span class="sprice">$89.00</span> <del class="dprice">$100.00</del></div>
-                                                        </div>
-                                                    </div><!-- //. single new collections  -->
-                                                </div>
-                                                <div class="col-lg-4 col-md-6">
-                                                    <div class="single-new-collection-item"><!-- single new collections -->
-                                                        <div class="thumb">
-                                                            <img src="assets/img/product-offer/06.jpg" alt="new collcetion image">
-                                                            <div class="hover">
-                                                                <a href="#" class="addtocart">Add To Cart</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="content">
-                                                            <span class="category">Cycle</span>
-                                                            <a href="#"><h4 class="title">Minimal Cycle</h4></a>
-                                                            <div class="price"><span class="sprice">$700.00</span> <del class="dprice">$1200.00</del></div>
-                                                        </div>
-                                                    </div><!-- //. single new collections  -->
-                                                </div>
-                                                <div class="col-lg-4 col-md-6">
-                                                    <div class="single-new-collection-item"><!-- single new collections -->
-                                                        <div class="thumb">
-                                                            <img src="assets/img/product-offer/07.jpg" alt="new collcetion image">
-                                                            <div class="hover">
-                                                                <a href="#" class="addtocart">Add To Cart</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="content">
-                                                            <span class="category">bike</span>
-                                                            <a href="#"><h4 class="title">Dart Motao Bike</h4></a>
-                                                            <div class="price"><span class="sprice">$800.00</span> <del class="dprice">$1000.00</del></div>
-                                                        </div>
-                                                    </div><!-- //. single new collections  -->
-                                                </div>
-                                            </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+
+                                    <div class="tab-pane fade" id="trendproduct" role="tabpanel" aria-labelledby="trendproduct-tab">
                                         <div class="row">
-                                            <div class="col-lg-4 col-md-6">
-                                                <div class="single-new-collection-item"><!-- single new collections -->
-                                                    <div class="thumb">
-                                                        <img src="assets/img/product-offer/02.jpg" alt="new collcetion image">
-                                                        <div class="hover">
-                                                            <a href="#" class="addtocart">Add To Cart</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="content">
-                                                        <span class="category">Sportswear</span>
-                                                        <a href="#"><h4 class="title">Black Tshirt Brock</h4></a>
-                                                        <div class="price"><span class="sprice">$23.00</span> <del class="dprice">$45.00</del></div>
-                                                    </div>
-                                                </div><!-- //. single new collections  -->
-                                            </div>
-                                            <div class="col-lg-4 col-md-6">
-                                                <div class="single-new-collection-item"><!-- single new collections -->
-                                                    <div class="thumb">
-                                                        <img src="assets/img/product-offer/03.jpg" alt="new collcetion image">
-                                                        <div class="hover">
-                                                            <a href="#" class="addtocart">Add To Cart</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="content">
-                                                        <span class="category">shoe</span>
-                                                        <a href="#"><h4 class="title">Footwear Dark</h4></a>
-                                                        <div class="price"><span class="sprice">$56.00</span> <del class="dprice">$78.00</del></div>
-                                                    </div>
-                                                </div><!-- //. single new collections  -->
-                                            </div>
-                                            <div class="col-lg-4 col-md-6">
-                                                <div class="single-new-collection-item"><!-- single new collections -->
-                                                    <div class="thumb">
-                                                        <img src="assets/img/product-offer/04.jpg" alt="new collcetion image">
-                                                        <div class="hover">
-                                                            <a href="#" class="addtocart">Add To Cart</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="content">
-                                                        <span class="category">accesories</span>
-                                                        <a href="#"><h4 class="title">Milo Hoverboard</h4></a>
-                                                        <div class="price"><span class="sprice">$83.00</span> <del class="dprice">$120.00</del></div>
-                                                    </div>
-                                                </div><!-- //. single new collections  -->
-                                            </div>
-                                            <div class="col-lg-4 col-md-6">
-                                                <div class="single-new-collection-item"><!-- single new collections -->
-                                                    <div class="thumb">
-                                                        <img src="assets/img/product-offer/05.jpg" alt="new collcetion image">
-                                                        <div class="hover">
-                                                            <a href="#" class="addtocart">Add To Cart</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="content">
-                                                        <span class="category">hat</span>
-                                                        <a href="#"><h4 class="title">Red Yello Hat</h4></a>
-                                                        <div class="price"><span class="sprice">$89.00</span> <del class="dprice">$100.00</del></div>
-                                                    </div>
-                                                </div><!-- //. single new collections  -->
-                                            </div>
-                                            <div class="col-lg-4 col-md-6">
-                                                <div class="single-new-collection-item"><!-- single new collections -->
-                                                    <div class="thumb">
-                                                        <img src="assets/img/product-offer/06.jpg" alt="new collcetion image">
-                                                        <div class="hover">
-                                                            <a href="#" class="addtocart">Add To Cart</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="content">
-                                                        <span class="category">Cycle</span>
-                                                        <a href="#"><h4 class="title">Minimal Cycle</h4></a>
-                                                        <div class="price"><span class="sprice">$700.00</span> <del class="dprice">$1200.00</del></div>
-                                                    </div>
-                                                </div><!-- //. single new collections  -->
-                                            </div>
-                                            <div class="col-lg-4 col-md-6">
-                                                <div class="single-new-collection-item"><!-- single new collections -->
-                                                    <div class="thumb">
-                                                        <img src="assets/img/product-offer/07.jpg" alt="new collcetion image">
-                                                        <div class="hover">
-                                                            <a href="#" class="addtocart">Add To Cart</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="content">
-                                                        <span class="category">bike</span>
-                                                        <a href="#"><h4 class="title">Dart Motao Bike</h4></a>
-                                                        <div class="price"><span class="sprice">$800.00</span> <del class="dprice">$1000.00</del></div>
-                                                    </div>
-                                                </div><!-- //. single new collections  -->
-                                            </div>
+                                                <app-product-details-cell *ngFor="let item of trendingProducts" [productItem]="item"></app-product-details-cell>
                                         </div>
                                     </div>
                                 </div>
-                        </div>
-                    </div><!-- //.home six trending seller filter -->
-                       </div>
-                   </div>
+                            </div>
+
+                        </div><!-- //.home six trending seller filter -->
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
 </div>

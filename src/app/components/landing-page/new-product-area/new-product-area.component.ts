@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
+import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/model/product';
 
 @Component({
@@ -9,43 +9,42 @@ import { Product } from 'src/app/model/product';
 })
 export class NewProductAreaComponent implements OnInit {
 
-  constructor(private shoppingCartService:ShoppingCartService) { }
+  private trendingProducts:Product[]=[];
+  private hotDealsProducts:Product[]=[];
+
+  constructor(private productService:ProductService) { }
 
   ngOnInit() {
+    this.productService.getProducts().subscribe(products=>{
+      var products1=products;
+      this.sortByRatings(products);
+      this.sortByDiscount(products1);
+    });
+
   }
 
-  addToCart(testnum){ // should take product as parameter , not take id
-
-
-    // dummy data
-    var testProd:Product = new Product();
-
-    console.log(testnum);
-
-    if(testnum == 1){
-
-    testProd.pid = "PAAA";
-    testProd.title = "Test Product Title";
-    testProd.price = 500;
-    testProd.sprice = 350;
-    testProd.imageURL = "assets/img/recent-review/02.jpg";
-
-    }else if(testnum == 2){
-
-      testProd.pid = "YZZZ";
-      testProd.title = "A Nice Hat";
-      testProd.price = 900;
-      testProd.sprice = 50;      
-      testProd.imageURL = "assets/img/recent-review/03.jpg"
-    }
-
-    console.log(testProd);
-
-    this.shoppingCartService.addProductToCart(testProd);
-
+  public sortByRatings(products) {
+    products.sort(function(a, b){
+      return b.ratings-a.ratings;
+    });
     
+    for (var i=0; i<6; ++i) {
+      this.trendingProducts[i]=products[i];
+    }
+    console.log("trendingProducts:")
+    console.log(this.trendingProducts);
+  }
 
-
+  public sortByDiscount(products) {
+    products.sort(function(a, b){
+      return (a.price/a.sprice)-(b.price/b.sprice);
+    });
+    
+    for (var i=0; i<6; ++i) {
+      this.hotDealsProducts[i]=products[i];
+    }
+    console.log("hotDeals")
+    console.log(this.hotDealsProducts);
   }
 
 }

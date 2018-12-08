@@ -1,3 +1,4 @@
+
 /**--------------------------------
  * Set interval for all countdown
  * -----------------------------**/
@@ -40,7 +41,9 @@ var homeSixTwo = function(){
  * ----------------------------**/
 var home6 = function(){
 
-    var data = countdownstart(countDownDate);
+    var endingDate=document.getElementById('endDate').value;
+    var countDownEndDate = new Date(endingDate).getTime();
+    var data = countdownstartnodays(countDownEndDate);
 
     var hours = document.getElementById('chour');
     var miniutes = document.getElementById('cmin');
@@ -92,7 +95,7 @@ var x = function(){
 
 
 
-function countdownstart(distance){
+function countdownstart(countDownDate){
     //get today date time
     var now = new Date().getTime();
 
@@ -105,6 +108,24 @@ function countdownstart(distance){
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
     return ({
         "days":days,
+        "hours" : hours,
+        "minutes" : minutes,
+        "seconds" : seconds,
+        "distance" : distance
+    });
+}
+
+function countdownstartnodays(countDownDate){
+    //get today date time
+    var now = new Date().getTime();
+
+    //get the distance
+    var distance = countDownDate - now;
+
+    var hours = Math.floor((distance / (1000 * 60 * 60)));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    return ({
         "hours" : hours,
         "minutes" : minutes,
         "seconds" : seconds,
