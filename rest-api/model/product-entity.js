@@ -23,8 +23,7 @@ var ProductSchema  = new mongoose.Schema({
     techSpecs: { type: String},
     description: { type: String},
     features: { type: String},
-    ratings: { type: Number}, //added ratings
-    reviews: [{ type: String}], //changed reviews to an array of strings 
+    reviews: { type: String},
     rewardPoints: { type: Number},
     imageUrl: {type:String },
     doe: {type: Date},

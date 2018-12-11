@@ -84,6 +84,10 @@ require('./rest-api/router/profile-router')(endPoint);
 require('./rest-api/router/product-router')(endPoint);
 require('./rest-api/router/vendor-router')(endPoint);
 require('./rest-api/router/ad-router')(endPoint);
+require('./rest-api/router/slider-router')(endPoint);
+//Calling the router function
+require('./rest-api/router/savelater-router')(endPoint);  
+require('./rest-api/router/address-router')(endPoint); 
 //here endpoint will be prefix with  v1
 app.use(RESTAPI.REST_VERSION, endPoint);
 

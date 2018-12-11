@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/model/product';
+import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
+import { CookieService } from 'ngx-cookie';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +10,43 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  public productList:Product[] = [];  
+  public itemsInCart = 0;
+
+  constructor(private shoppingCartService:ShoppingCartService,private _cookieService:CookieService) { }
 
   ngOnInit() {
+
+    this.shoppingCartService.productObservable.subscribe(
+      pProductArray=>{
+
+        console.log("header update");
+
+        this.itemsInCart = pProductArray.length;
+
+      }
+    );
+
+    // Retrieve the object from storage
+    //var cartObject = localStorage.getItem('cart');
+    //var cartObject = sessionStorage.getItem('cart');
+    var cartObject = this._cookieService.getObject("cart");
+
+    //var prodArr = JSON.parse(cartObject);
+    var prodArr = [];
+    prodArr.push(cartObject);
+    
+    if(typeof prodArr[0] != 'undefined' ){
+      console.log( "header - prodArr[0].length: " );
+      console.log( prodArr[0].length );
+
+      this.itemsInCart = prodArr[0].length;
+    }
+    else{
+      this.itemsInCart = 0; 
+    }
+
+
   }
 
 }

@@ -27,7 +27,8 @@ import { PageNotFoundComponent } from './components/errors/page-not-found/page-n
 import { ListProductsComponent } from './components/prodcuts/list-products/list-products.component';
 import { AddVendorComponent } from './components/vendor/add-vendor/add-vendor.component';
 import { VendorListComponent } from './components/vendor/vendor-list/vendor-list.component';
-
+import { GoogleLoginComponent } from './components/login/google-login/google-login.component';
+import { ManageSliderComponent } from './components/slider/manage-slider/manage-slider.component';
 
 const routes: Routes = [
   { path: 'auth-user', component: LoginComponent},
@@ -56,6 +57,8 @@ const routes: Routes = [
    { path: 'privacy-policy', component: PolicyComponent},
    { path: 'about', component: AboutComponent},
    { path: 'contact', component: ContactComponent},
+   { path: 'googleLogin', component: GoogleLoginComponent},
+   { path: 'manage-slider', component: ManageSliderComponent},
    { path: '**', component: LandingPageComponent }
 ];
 

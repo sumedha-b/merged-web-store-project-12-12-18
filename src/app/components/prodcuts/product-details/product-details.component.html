@@ -38,11 +38,7 @@
                   <div class="right-content-area"><!-- right content area -->
                       <div class="top-content">
                           <ul class="review">
-                              <li><i class="fas fa-star"></i></li>
-                              <li><i class="fas fa-star"></i></li>
-                              <li><i class="fas fa-star"></i></li>
-                              <li><i class="fas fa-star-half-alt"></i></li>
-                              <li><i class="far fa-star"></i></li>
+                              <app-rating [rating]=rating></app-rating>
                               <li class="reviewes">23 <small>reviews</small> </li>
                           </ul>
                           <span class="orders">Orders (200+)</span>
@@ -109,7 +105,35 @@
                       </div>
                         <div class="tab-content" >
                           <div class="tab-pane fade show active" id="item_review" role="tabpanel" aria-labelledby="item-review-tab">
-                              <div class="item_review_content">
+                              
+                            
+                            <div class="item_review_content">
+                                <form >
+                                    <hr/>
+                                    <div class="form-group"><label>Rating: </label>
+                                        <select class="input-field" name = "rating" [(ngModel)]='review.rating'>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="comment">review:</label>
+                                            <textarea class="form-control" rows="5" name="description" [(ngModel)]='review.description'></textarea>
+                                    </div>
+                                    <div class="btn-wrapper">
+                                            <input type="submit" (click)="addReview()" class="submit-btn" name = "reviewsubmit" value="submit review">
+                                    </div>
+                                    <hr/>
+                                    <div *ngFor= "let r of reviews;">
+                                        <hr/>
+                                         <app-rating [rating]="r.rating"></app-rating>
+                                        <p>{{r.description}}</p>
+                                        <hr/>
+                                    </div>
+                                  </form>
                                   <h4 class="title">Technical Specifications</h4>
                                   <ul class="product-specification"><!-- product specification -->
                                       <li *ngFor = "let p of product.techSpecs">
@@ -121,6 +145,7 @@
                                   </ul><!-- //.product specification -->
                               </div>
                           </div>
+                          
                           <div class="tab-pane fade" id="descr" role="tabpanel" aria-labelledby="descr-tab">
                               <div class="descr-tab-content">
                                   <h4 class="title">Product Descriptions</h4>

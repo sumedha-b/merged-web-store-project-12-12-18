@@ -1,6 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import {
+  SocialLoginModule,
+  AuthServiceConfig,
+  GoogleLoginProvider,AuthService
+  // FacebookLoginProvider,
+} from "angular-6-social-login-v2";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -48,14 +54,21 @@ import { VendorDetailsComponent } from './components/vendor/vendor-details/vendo
 import { ScartComponent } from './components/scart/scart.component';
 import { ChangeColorDirective } from './directives/change-color.directive';
 import { CcurrencyPipe } from './pipes/ccurrency.pipe';
-
+import { RatingComponent } from './components/rating/rating.component';
 import { AdvertisementComponent } from './components/landing-page/new-product-area/advertisement/advertisement.component';
 import { SecondAdvertisementComponent } from './components/landing-page/new-product-area/second-advertisement/second-advertisement.component';
 import { ProductDetailsCellComponent } from './components/landing-page/new-product-area/product-details-cell/product-details-cell.component';
 import { ShowHideDirective } from './directives/show-hide.directive';
 import { OfferAddComponent } from './components/landing-page/offer-add/offer-add.component';
 import { BestCustomerSellerComponent } from './components/landing-page/best-customer-seller/best-customer-seller.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbdModalBasic } from './components/slider/modal-basic';
+import { GoogleLoginComponent } from './components/login/google-login/google-login.component';
+import { ManageSliderComponent } from './components/slider/manage-slider/manage-slider.component';
+import { SlideshowModule } from 'ng-simple-slideshow';
 
+
+import { CookieModule } from 'ngx-cookie';
 
 
 @NgModule({
@@ -109,15 +122,40 @@ import { BestCustomerSellerComponent } from './components/landing-page/best-cust
     CcurrencyPipe,
     ShowHideDirective,
     OfferAddComponent,
-    BestCustomerSellerComponent
+    BestCustomerSellerComponent,
+    NgbdModalBasic,
+    GoogleLoginComponent,
+    ManageSliderComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule,
+    SlideshowModule,
+    CookieModule.forRoot()
   ],
-  providers: [],
+  providers: [{
+    provide: AuthServiceConfig,
+    useFactory: getAuthServiceConfigs
+  },AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+export function getAuthServiceConfigs() {
+  let config = new AuthServiceConfig(
+      [
+        // {
+        //   id: FacebookLoginProvider.PROVIDER_ID,
+        //   provider: new FacebookLoginProvider("Your-Facebook-app-id")
+        // },
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider("1071341576975-ujfbf1r6oibn6v2c58falqgh1ic0fejl.apps.googleusercontent.com")
+        }
+      ]
+  );
+  return config;
+}

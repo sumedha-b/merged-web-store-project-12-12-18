@@ -27,4 +27,7 @@ export class Product{
     features:string;
     reviews:string;
     techSpecs:TechSpec[]=[];  
+
+    qty:number;
+    itemPriceTotal:number;
 }

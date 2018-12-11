@@ -2,6 +2,8 @@ var jwt  = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var ProfileEntity=require('../model/profile-entity')
 var LoginEntity=require('../model/login-entity')
 var RESTAPI=require('../config/rest-api-constant');
+// var ImageFolderPath=require('../../config/image-folder-path')
+
 //Here we have to write logic to generate token using jsonwebtoken module!
 module.exports.authUser=(req,res)=> {
     //var login={username:"jack",password:"jill"};
@@ -66,4 +68,33 @@ module.exports.authUser=(req,res)=> {
            // }
             return res.status(500).send({ });
         });
+}
+
+module.exports.authGoogleUser=(req,res)=> {
+    var data = req.body;
+    var loginEntity = new LoginEntity();
+    console.log(data);
+    loginEntity.username=data.email;
+    loginEntity.role="user";
+    loginEntity.status="active";
+    // let pphoto = data.picture;
+
+    // //saving image location into the database!
+    // var imgext=pphoto.substring(pphoto.length-4);
+    // var pphotoName=loginEntity.username+"_profile"+imgext;
+    // console.log(pphotoName);
+    // //this is just image path which we will save into the database
+    // loginEntity.photo=ImageFolderPath.VENDOR_PROFILES+"/"+pphotoName;
+    // //----------------------------------------------------------------------------------------------------//
+    // //saving file on server file system
+    // pphoto.mv(appRoot +"/"+ImageFolderPath.VENDOR_PROFILES+"/"+pphotoName);
+    console.log(loginEntity);
+    loginEntity.save(function(err){
+        if(err){
+            console.log(err);
+            return res.status(200).json({status:"fail",message:"couldn't save to database"});
+         }else{
+            return res.status(200).json({status:"success",message:"user sucessfully saved"})
+         }
+    });
 }

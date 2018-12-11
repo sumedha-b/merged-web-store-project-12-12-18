@@ -135,10 +135,24 @@
                     <h3 class="title">Your Order</h3>
                     <ul class="order-list">
                         <li>
+                            {{productList | json}}
+                        </li>
+                        <li>
                             <div class="single-order-list heading">
                                 Product <span class="right">Total</span>
                             </div>
                         </li>
+
+                        <ng-container *ngFor="let item of productList; let i = index">
+
+                                <li class="name">
+                                        <div class="single-order-list">
+                                            {{item.title}} 	× {{item.qty}} <span class="right">{{ item.qty * item.price }}</span>
+                                        </div>
+                                    </li>
+
+                        </ng-container>
+
                         <li class="name">
                             <div class="single-order-list">
                                 Wireless Audio System Multiroom 360 	× 1 <span class="right">$3,299.00</span>

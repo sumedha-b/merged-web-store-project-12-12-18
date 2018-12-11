@@ -90,30 +90,30 @@
         /*-----------------------------
             Cart Page Quantity 
         -----------------------------*/
-        $(document).on('click','.qtminus',function(){
-            var el = $(this);
-            var $tselector = el.parent().find('.qttotal').selector;
-            var total = $($tselector).text();
-            if( total >= 1 ){
-                total--;
-            }
-            $($tselector).text(total);
-        });
-        $(document).on('click','.qtplus',function(){
-            var el = $(this);
-            var $tselector = el.parent().find('.qttotal').selector;
-            var total = $($tselector).text();
-            total++;
+        // $(document).on('click','.qtminus',function(){
+        //     var el = $(this);
+        //     var $tselector = el.parent().find('.qttotal').selector;
+        //     var total = $($tselector).text();
+        //     if( total >= 1 ){
+        //         total--;
+        //     }
+        //     $($tselector).text(total);
+        // });
+        // $(document).on('click','.qtplus',function(){
+        //     var el = $(this);
+        //     var $tselector = el.parent().find('.qttotal').selector;
+        //     var total = $($tselector).text();
+        //     total++;
 
-            $($tselector).text(total);
-        });
+        //     $($tselector).text(total);
+        // });
         /*-------------------------------
             Remove Item From Cart table
         -------------------------------*/
-        $(document).on('click','.cart-remove-item',function(){
-            var el = $(this);
-            el.parent().parent().parent().hide(1000);
-        });
+        // $(document).on('click','.cart-remove-item',function(){
+        //     var el = $(this);
+        //     el.parent().parent().parent().hide(1000);
+        // });
 
         /*---------------------------
             Recently Added carousel

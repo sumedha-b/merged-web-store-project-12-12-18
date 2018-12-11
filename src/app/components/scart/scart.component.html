@@ -6,24 +6,26 @@
       </a>
       <span class="side-sidebar-close-btn" ><i class="fas fa-times"></i></span>
   </div><!-- //. top content -->
-  <div class="bottom-content"><!-- bottom content -->
+  <div class="bottom-content" style="height: 350px; overflow-y: auto;"><!-- bottom content -->
       <div class="cart-products"><!-- cart product -->
           <h4 class="title">Shopping cart</h4>
 
 
           <div *ngFor="let item of productList; let i = index">
+
+
                <!-- {{item | json }} -->
 
-              <div *ngIf="item.title !== undefined">
+              <div *ngIf="item && item.title !== undefined">
 
                 <div class="single-product-item"><!-- single product item -->
                   <div class="thumb">
-                      <img src="{{item.imageURL}}" alt="recent review">
+                      <img src="{{url}}/{{item.imageUrl}}" alt="recent review" style="height:80px;">
                   </div>
                   <div class="content">
                       <h4 class="title">{{item.title}}</h4>
                       <div class="price"><span class="pprice">${{item.sprice}} </span> <del class="dprice">${{item.price}} </del></div>
-                      <a (click)="removeItem(item, i)" class="remove-cart">Remove</a>
+                      <a (click)="removeItem(item, i)" class="remove-cart">Remove <!-- {{i}} --></a>
                       <!-- (click)="removeItem(item.pid)" -->
                   </div>
 
@@ -47,8 +49,12 @@
           -->
 
           <div class="btn-wrapper">
-              <a href="/shopping-cart" class="boxed-btn">Checkout</a>
+              <a (click)="goToShoppingCartPage()" class="boxed-btn" style="color:#fff;cursor: pointer;">Checkout</a>
           </div>
+
+          <div class="btn-wrapper">
+                <a (click)="clearCart()" class="boxed-btn" style="color:#fff;cursor: pointer;">Clear Cart</a>
+            </div>
       </div> <!-- //. cart product -->
   </div><!-- //. bottom content -->
 </div>
