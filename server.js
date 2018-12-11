@@ -75,6 +75,13 @@ dataPusher();
 var adDataPusher=require('./rest-api/utils/ad-data-pusher');
 adDataPusher();
 require('./rest-api/utils/product-data-pusher')();
+///data pusher for landing page
+require('./rest-api/utils/featured-data-pusher')();
+require('./rest-api/utils/bestseller-data-pusher')();
+var datapusher=require('./rest-api/utils/ladiescloths-data-pusher');
+datapusher();
+require('./rest-api/utils/offeradd-data-pusher')();
+
 
 //This is acting as middleware
 //require('./rest-api/security/validate-token')(endPoint);
@@ -88,6 +95,11 @@ require('./rest-api/router/slider-router')(endPoint);
 //Calling the router function
 require('./rest-api/router/savelater-router')(endPoint);  
 require('./rest-api/router/address-router')(endPoint); 
+require('./rest-api/router/featured-router')(endPoint);
+require('./rest-api/router/bestseller-router')(endPoint);
+require('./rest-api/router/ladiescloths-router')(endPoint);
+require('./rest-api/router/offeradd-router')(endPoint);
+
 //here endpoint will be prefix with  v1
 app.use(RESTAPI.REST_VERSION, endPoint);
 

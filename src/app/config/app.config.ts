@@ -13,4 +13,9 @@ export class AppConfig{
     public static WISHLIST_ENDPOINT = AppConfig.BASE_ENDPOINT + '/admin/wishlist';
     public static PRODUCTBYIDS_ENDPOINT = AppConfig.BASE_ENDPOINT + '/admin/productsbyids';
     public static REVIEW_ENDPOINT = AppConfig.PRODUCT_ENDPOINT + '/review';
+
+    public static FEATURED_ENDPOINT = AppConfig.BASE_ENDPOINT + '/admin/featured';
+    public static BESTSELLER_ENDPOINT = AppConfig.BASE_ENDPOINT + '/admin/bestseller';
+    public static LADIES_CLOTH_ENDPOINT = AppConfig.BASE_ENDPOINT + '/admin/ladiescloths';
+    public static OFFERADD_ENDPOINT = AppConfig.BASE_ENDPOINT + '/admin/offeradd';
 }

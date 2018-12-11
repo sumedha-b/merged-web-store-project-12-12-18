@@ -2,81 +2,75 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-6">
+                <app-featured></app-featured>
+            </div>
+            <div class="col-lg-4 col-md-6">
                 <div class="single-featured-one-item"><!-- single featured item -->
                     <div class="inner-item">
-                        <span class="subtitle">get 45% off</span>
-                        <h3 class="title">Featured</h3>
+                        <span class="subtitle">{{bestsellerProduct[1].subtitle}}</span>
+                        <h3 class="titlel">{{bestsellerProduct[1].titlel}}</h3>
                     </div>
                     <ul>
                         <li>
                             <div class="single-rated-box-one "><!-- single rated box one -->
                                 <div class="thumb">
-                                    <img src="assets/img/product-small/01.jpg" alt="product small image">
+                                      
+                                    <img src="{{bestsellerProduct[0].imageUrl}}" alt="product small image">
                                 </div>
                                 <div class="content">
                                     <ul class="ratings">
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star-half-alt"></i></li>
-                                        <li><i class="far fa-star"></i></li>
+                                            <li *ngFor="let p of fillstar;"><i class="fas fa-star"></i></li>
+                                            <li *ngFor="let f of emptystar;"><i class="far fa-star"></i></li>
                                     </ul>
-                                    <a href="product-details.html"><h4 class="title">Minimal Screw</h4></a>
-                                    <div class="price"><span class="sprice">$83.00</span> <del class="dprice">$120.00</del></div>
+                                    <a href=" "><h4 class="title">{{bestsellerProduct[0].title}}</h4></a>
+                                    <div class="price"><span class="sprice">{{bestsellerProduct[0].sprice}}</span> <del class="dprice">{{bestsellerProduct[0].dprice}}</del></div>
                                 </div>
                             </div><!-- //.single rated box one -->
                         </li>
                         <li>
                             <div class="single-rated-box-one "><!-- single rated box one -->
                                 <div class="thumb">
-                                    <img src="assets/img/product-small/02.jpg" alt="product small image">
+                                    <img src="{{bestsellerProduct[1].imageUrl}}" alt="product small image">
                                 </div>
                                 <div class="content">
                                     <ul class="ratings">
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star-half-alt"></i></li>
-                                        <li><i class="far fa-star"></i></li>
+                                            <li *ngFor="let p of fillstar;"><i class="fas fa-star"></i></li>
+                                            <li *ngFor="let f of emptystar;"><i class="far fa-star"></i></li>
+                                        
+                                       
                                     </ul>
-                                    <a href="product-details.html"><h4 class="title">Minimal Screw</h4></a>
-                                    <div class="price"><span class="sprice">$83.00</span> <del class="dprice">$120.00</del></div>
+                                    <a href="product-details.html"><h4 class="title">{{bestsellerProduct[1].title}}</h4></a>
+                                    <div class="price"><span class="sprice">{{bestsellerProduct[1].sprice}}</span> <del class="dprice">{{bestsellerProduct[1].dprice}}</del></div>
                                 </div>
                             </div><!-- //.single rated box one -->
                         </li>
                         <li>
                             <div class="single-rated-box-one "><!-- single rated box one -->
                                 <div class="thumb">
-                                    <img src="assets/img/product-small/03.jpg" alt="product small image">
+                                    <img src="{{bestsellerProduct[2].imageUrl}}" alt="product small image">
                                 </div>
                                 <div class="content">
                                     <ul class="ratings">
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star-half-alt"></i></li>
-                                        <li><i class="far fa-star"></i></li>
+                                            <li *ngFor="let p of fillstar;"><i class="fas fa-star"></i></li>
+                                            <li *ngFor="let f of emptystar;"><i class="far fa-star"></i></li>
                                     </ul>
-                                    <a href="product-details.html"><h4 class="title">Minimal Screw</h4></a>
-                                    <div class="price"><span class="sprice">$83.00</span> <del class="dprice">$120.00</del></div>
+                                    <a href="product-details.html"><h4 class="title">{{bestsellerProduct[2].title}}</h4></a>
+                                    <div class="price"><span class="sprice">{{bestsellerProduct[2].sprice}}</span> <del class="dprice">{{bestsellerProduct[2].dprice}}</del></div>
                                 </div>
                             </div><!-- //.single rated box one -->
                         </li>
                         <li>
                             <div class="single-rated-box-one "><!-- single rated box one -->
                                 <div class="thumb">
-                                    <img src="assets/img/product-small/04.jpg" alt="product small image">
+                                    <img src="{{bestsellerProduct[3].imageUrl}}" alt="product small image">
                                 </div>
                                 <div class="content">
                                     <ul class="ratings">
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star-half-alt"></i></li>
-                                        <li><i class="far fa-star"></i></li>
+                                            <li *ngFor="let p of fillstar";><i class="fas fa-star"></i></li>
+                                            <li *ngFor="let f of emptystar;"><i class="far fa-star"></i></li>
                                     </ul>
-                                    <a href="product-details.html"><h4 class="title">Minimal Screw</h4></a>
-                                    <div class="price"><span class="sprice">$83.00</span> <del class="dprice">$120.00</del></div>
+                                    <a href="product-details.html"><h4 class="title">{{bestsellerProduct[3].title}}</h4></a>
+                                    <div class="price"><span class="sprice">{{bestsellerProduct[3].sprice}}</span> <del class="dprice">{{bestsellerProduct[3].dprice}}</del></div>
                                 </div>
                             </div><!-- //.single rated box one -->
                         </li>
@@ -84,10 +78,7 @@
                 </div><!-- //.single featured item -->
             </div>
             <div class="col-lg-4 col-md-6">
-                <app-best-customer-seller></app-best-customer-seller>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <app-offer-add></app-offer-add>
+                <app-offersadd></app-offersadd>
             </div>
         </div>
     </div>

@@ -66,7 +66,8 @@ import { NgbdModalBasic } from './components/slider/modal-basic';
 import { GoogleLoginComponent } from './components/login/google-login/google-login.component';
 import { ManageSliderComponent } from './components/slider/manage-slider/manage-slider.component';
 import { SlideshowModule } from 'ng-simple-slideshow';
-
+import { FeaturedComponent } from './components/landing-page/featured/featured.component';
+import { OffersaddComponent } from './components/landing-page/offersadd/offersadd.component';
 
 import { CookieModule } from 'ngx-cookie';
 
@@ -126,7 +127,9 @@ import { CookieModule } from 'ngx-cookie';
     NgbdModalBasic,
     GoogleLoginComponent,
     ManageSliderComponent,
-    RatingComponent
+    RatingComponent,
+    FeaturedComponent,
+    OffersaddComponent,
   ],
   imports: [
     BrowserModule,
