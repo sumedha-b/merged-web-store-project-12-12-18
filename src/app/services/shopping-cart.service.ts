@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Product } from '../model/product';
 import * as Rx from "rxjs";
 import { CookieService } from 'ngx-cookie';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AppConfig } from '../config/app.config';
+import { OrderPlacedDetials } from '../model/checkoutModels/orderPlacedDetails';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +16,13 @@ export class ShoppingCartService {
 
   public prodArray:Product[] = [];
 
-  constructor(private _cookieService:CookieService) { } 
+  constructor(private _cookieService:CookieService,private http:HttpClient) { } 
+
+  public checkout(orderPlacedDetails:OrderPlacedDetials){
+    const httpOptions = {headers:new HttpHeaders({'Content-Type':'application/json'})};
+    return this.http.post(AppConfig.CHECKOUT_ENDPOINT, orderPlacedDetails, httpOptions);
+  }
+
 
   public saveCheckoutProducts(aproduct: Product[]){
     console.log("save checkout products");

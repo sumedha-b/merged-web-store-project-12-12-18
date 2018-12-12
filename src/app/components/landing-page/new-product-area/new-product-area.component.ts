@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import { Product } from 'src/app/model/product';
+import { AppConfig } from 'src/app/config/app.config';
 
 @Component({
   selector: 'app-new-product-area',
@@ -12,6 +13,8 @@ export class NewProductAreaComponent implements OnInit {
 
   private trendingProducts:Product[]=[];
   private hotDealsProducts:Product[]=[];
+
+  public url = AppConfig.BASE_ENDPOINT;  
 
   constructor(private productService:ProductService,private shoppingCartService:ShoppingCartService) { }
 

@@ -47,8 +47,9 @@ module.exports.findProductsByIds=(req,res)=> {
 
 module.exports.getImage = (req,res) =>{
    console.log('its routing');
-   var url = req.params.imageUrl;
-   var imagePath = appRoot  + "/" +  ImageFolderPath.PRODUCTS_IMAGES +"/" + url;
+   var url = req.query.imageUrl;
+   console.log("_@)@)@)@)@hey!  = "+url);
+   var imagePath = appRoot  + "/" +  ImageFolderPath.BASE_IMAGE_DB_PATH +"/" + url;
    fs.readFile(imagePath,(err,data)=>{
       
       if (err){

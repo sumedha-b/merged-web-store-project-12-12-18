@@ -39,7 +39,7 @@
                                                 <div class="col-lg-4 col-md-6" *ngFor="let productDetails of hotDealsProducts">
                                                         <div class="single-new-collection-item"><!-- single new collections -->
                                                             <div class="thumb">
-                                                                <img src="{{productDetails.imageUrl}}" alt="new collcetion image">
+                                                                <img src="{{url}}/load-image?imageUrl={{productDetails.imageUrl}}" alt="new collcetion image">
                                                                 <div class="hover">
                                                                     <a (click)="addToCart(productDetails)" class="addtocart">Add To Cart</a>
                                                                 </div>
@@ -65,7 +65,8 @@
                                                 <div class="col-lg-4 col-md-6" *ngFor="let productDetails of trendingProducts">
                                                         <div class="single-new-collection-item"><!-- single new collections -->
                                                             <div class="thumb">
-                                                                <img src="{{productDetails.imageUrl}}" alt="new collcetion image">
+                                                                 
+                                                                <img src="{{url}}/load-image?imageUrl={{productDetails.imageUrl}}" alt="new collcetion image">
                                                                 <div class="hover">
                                                                     <a (click)="addToCart(productDetails)" class="addtocart">Add To Cart</a>
                                                                 </div>

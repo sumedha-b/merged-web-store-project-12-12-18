@@ -68,12 +68,14 @@ import { ManageSliderComponent } from './components/slider/manage-slider/manage-
 import { SlideshowModule } from 'ng-simple-slideshow';
 import { FeaturedComponent } from './components/landing-page/featured/featured.component';
 import { OffersaddComponent } from './components/landing-page/offersadd/offersadd.component';
+import { OrderConfirmationComponent } from './components/checkout/order-confirmation/order-confirmation.component';
 
 import { CookieModule } from 'ngx-cookie';
 
 
 @NgModule({
   declarations: [
+    OrderConfirmationComponent,
     AdvertisementComponent,
     SecondAdvertisementComponent,
     ProductDetailsCellComponent,

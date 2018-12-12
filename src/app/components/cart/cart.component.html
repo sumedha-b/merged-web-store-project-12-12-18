@@ -37,9 +37,9 @@
                             </thead>
                             <tbody>
 
-                                <tr><td colspan="4">
+                                <!-- <tr><td colspan="4">
                                     {{ productList | json }}
-                                </td></tr>
+                                </td></tr> -->
 
                             <tr *ngFor="let item of productList; let i = index">
 
@@ -52,7 +52,7 @@
                                                 <i class="fas fa-times"></i>
                                             </div>
                                             <div class="thumb">
-                                                <img src="{{url}}/{{item.imageUrl}}" alt="cart image" style="height:80px;"><br />
+                                                <img src="{{url}}/load-image?imageUrl={{item.imageUrl}}" alt="cart image" style="height:80px;"><br />
                                                 <a (click)="addToSaveForLater(item)" style="color:#2a9cf5;cursor: pointer;">Save for later</a>
                                             </div>
                                             <div class="content">

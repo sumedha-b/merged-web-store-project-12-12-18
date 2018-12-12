@@ -18,4 +18,5 @@ export class AppConfig{
     public static BESTSELLER_ENDPOINT = AppConfig.BASE_ENDPOINT + '/admin/bestseller';
     public static LADIES_CLOTH_ENDPOINT = AppConfig.BASE_ENDPOINT + '/admin/ladiescloths';
     public static OFFERADD_ENDPOINT = AppConfig.BASE_ENDPOINT + '/admin/offeradd';
+    public static CHECKOUT_ENDPOINT = AppConfig.BASE_ENDPOINT + '/admin/checkout';
 }

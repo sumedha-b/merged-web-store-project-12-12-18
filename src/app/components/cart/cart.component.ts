@@ -20,7 +20,7 @@ export class CartComponent implements OnInit {
   private total:number = 0;
   private needsSaveForLaterList = false;
 
-  public url = AppConfig.PRODUCT_ENDPOINT + "/image";   
+  public url = AppConfig.BASE_ENDPOINT;   
 
   constructor(private _cookieService:CookieService, 
     private shoppingCartService:ShoppingCartService, 

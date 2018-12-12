@@ -13,12 +13,12 @@ module.exports=()=>{
     var p1=new ProductEntity();
     p1.pid="P101";
     p1.title="Wireless Charger";
-    p1.category="Electronic Accessories";
+    p1.category="Electronics";
     p1.ratings=4.38;
     p1.reviews=["1","2","3"];
     p1.price=45.35;
     p1.sprice=69.99;
-    p1.imageUrl="assets/img/product-offer/04.jpg";
+    p1.imageUrl="products/electronics/04.jpg";
     p1.save((err)=>{
         if (err)
             console.log("Product is already created.");
@@ -34,7 +34,7 @@ module.exports=()=>{
     p2.reviews=["1","2"];
     p2.price=40.00;
     p2.sprice=59.99;
-    p2.imageUrl="assets/img/new-collections/06.jpg";
+    p2.imageUrl="products/shoes/06.jpg";
     p2.save((err)=>{
         if (err)
             console.log("Product is already created.");
@@ -51,7 +51,7 @@ module.exports=()=>{
     p3.reviews=["1","2","3","4","5","6","7"];
     p3.price=54.99;
     p3.sprice=88.24;
-    p3.imageUrl="assets/img/new-collections/10.jpg";
+    p3.imageUrl="products/beauty/10.jpg";
     p3.save((err)=>{
         if (err)
             console.log("Product is already created.");
@@ -67,7 +67,7 @@ module.exports=()=>{
     p4.reviews=["1","2","3","4","5","6","7"];
     p4.price=279.00;
     p4.sprice=279.00;
-    p4.imageUrl="assets/img/product-offer/10.jpg";
+    p4.imageUrl="products/electronics/10.jpg";
     p4.save((err)=>{
         if (err)
             console.log("Product is already created.");
@@ -83,7 +83,7 @@ module.exports=()=>{
     p5.reviews=["1","2","3","4"];
     p5.price=379.99;
     p5.sprice=599.99 ;
-    p5.imageUrl="assets/img/product-offer/07.jpg";
+    p5.imageUrl="products/electronics/07.jpg";
     p5.save((err)=>{
         if (err)
             console.log("Product is already created.");
@@ -99,7 +99,7 @@ module.exports=()=>{
     p6.reviews=["1","2","3","4","5","6"];
     p6.price=37.00;
     p6.sprice=40.00;
-    p6.imageUrl="assets/img/new-collections/04.jpg";
+    p6.imageUrl="products/fashion/04.jpg";
     p6.save((err)=>{
         if (err)
             console.log("Product is already created.");
@@ -115,7 +115,7 @@ module.exports=()=>{
     p7.reviews=["1"];
     p7.price=89.00;
     p7.sprice=89.00;
-    p7.imageUrl="assets/img/new-collections/03.jpg";
+    p7.imageUrl="products/fashion/03.jpg";
     p7.save((err)=>{
         if (err)
             console.log("Product is already created.");
@@ -147,7 +147,7 @@ module.exports=()=>{
     p9.reviews=["1","2","3","4","5","6","7","8"];
     p9.price=299.99;
     p9.sprice=349.95;
-    p9.imageUrl="assets/img/product-offer/09.jpg";
+    p9.imageUrl="products/electronics/09.jpg";
     p9.save((err)=>{
         if (err)
             console.log("Product is already created.");
@@ -158,12 +158,12 @@ module.exports=()=>{
     var p10=new ProductEntity();
     p10.pid="P110";
     p10.title="Lightweight Headphones";
-    p10.category="Electtronics";
+    p10.category="Electronics";
     p10.ratings=3.18;
     p10.reviews=["1","2","3","4","5"];
     p10.price=13.00;
     p10.sprice=15.00;
-    p10.imageUrl="assets/img/product-offer/02.jpg";
+    p10.imageUrl="products/electronics/02.jpg";
     p10.save((err)=>{
         if (err)
             console.log("Product is already created.");
