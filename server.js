@@ -68,19 +68,20 @@ endPoint.use(function (err, req, res, next) {
 require('./rest-api/utils/mongodb-utils')();
 
 //creating dummy logins
-var dataPusher=require('./rest-api/utils/login-data-pusher');
-dataPusher();
+// var dataPusher=require('./rest-api/utils/login-data-pusher');
+// dataPusher();
 
 
-var adDataPusher=require('./rest-api/utils/ad-data-pusher');
-adDataPusher();
+// var adDataPusher=require('./rest-api/utils/ad-data-pusher');
+// adDataPusher();
+
 require('./rest-api/utils/product-data-pusher')();
 ///data pusher for landing page
-require('./rest-api/utils/featured-data-pusher')();
-require('./rest-api/utils/bestseller-data-pusher')();
-var datapusher=require('./rest-api/utils/ladiescloths-data-pusher');
-datapusher();
-require('./rest-api/utils/offeradd-data-pusher')();
+// require('./rest-api/utils/featured-data-pusher')();
+// require('./rest-api/utils/bestseller-data-pusher')();
+// var datapusher=require('./rest-api/utils/ladiescloths-data-pusher');
+// datapusher();
+// require('./rest-api/utils/offeradd-data-pusher')();
 
 
 //This is acting as middleware
@@ -100,6 +101,7 @@ require('./rest-api/router/bestseller-router')(endPoint);
 require('./rest-api/router/ladiescloths-router')(endPoint);
 require('./rest-api/router/offeradd-router')(endPoint);
 require('./rest-api/router/common-router')(endPoint);
+require('./rest-api/router/checkout-router')(endPoint);
 
 //here endpoint will be prefix with  v1
 app.use(RESTAPI.REST_VERSION, endPoint);

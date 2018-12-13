@@ -411,7 +411,7 @@
   -o-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
   cursor: pointer; }
-  .submit-btn:hover {
+  .submit-btn:hover:enabled {
     background-color: #232b37; }
   .submit-btn.btn-rounded {
     border-radius: 30px; }

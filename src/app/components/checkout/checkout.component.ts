@@ -7,6 +7,7 @@ import { OrderDetails, Item } from '../../model/checkoutModels/orderDetails';
 import { BillingDetails } from '../../model/checkoutModels/billingDetails';
 import { NgForm } from '@angular/forms';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
+import { AppConfig } from 'src/app/config/app.config';
 
 @Component({
   selector: 'app-checkout',
@@ -26,6 +27,7 @@ export class CheckoutComponent implements OnInit {
   public productList:Product[] = [];
   public termsRead:number=0;
   public isCompleted:boolean=false;
+  public url = AppConfig.BASE_ENDPOINT;   
 
   constructor(private _cookieService:CookieService, private shoppingCartService:ShoppingCartService) { }
 

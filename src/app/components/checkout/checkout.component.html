@@ -129,7 +129,7 @@
                             <div class="col-lg-12">
                                 <div class="shipping-details"><!-- shipping details -->
                                     <div class="form-element textarea">
-                                        <label>Order notes</label>
+                                        <h3 class="title">Order notes</h3>
                                         <textarea class="input-field textarea" name="orderNotes" [(ngModel)]="orderPlacedDetails.orderNotes" cols="30" rows="10"></textarea>
                                     </div>
                                 </div><!-- //. shipping details -->
@@ -153,7 +153,9 @@
                         <ng-container *ngFor="let item of productList; let i = index">
                             <li class="name">
                                 <div class="single-order-list">
-                                    <img src="{{item.imageUrl}}" alt="cart image" style="height:60px;">&nbsp;&nbsp;
+                                    <img src="{{url}}/load-image?imageUrl={{item.imageUrl}}" alt="cart image" style="height:60px;">&nbsp;&nbsp;
+                                    <!-- <img _ngcontent-c7="" alt="new collcetion image" 
+                                        src="http://localhost:4000/v3/load-image?imageUrl=products/beauty/10.jpg"> -->
                                     {{item.title}} 	× {{item.qty}} <span class="right">{{ item.qty * item.price | currency}}</span>
                                 </div>
                             </li>

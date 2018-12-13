@@ -1,5 +1,5 @@
-var CheckoutController = require('./checkout-controller')
+var CheckoutController = require('../controller/checkout/checkout-controller')
 module.exports=function(endpoint) {
-    endpoint.post("/admin/checkout", CheckoutController.checkout);
+    endpoint.post("/checkout", CheckoutController.checkout);
 }
 
