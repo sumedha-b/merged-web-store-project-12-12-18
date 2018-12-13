@@ -18,7 +18,6 @@ export class OrderConfirmationComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.orderPlacedDetails.billingDetails.country);
   }
 
 }
