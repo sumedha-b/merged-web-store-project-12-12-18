@@ -14,8 +14,9 @@ import { Router } from '@angular/router';
 export class ScartComponent implements OnInit {
 
   //public url = AppConfig.PRODUCT_ENDPOINT + "/image"; 
+  //public url="http://localhost:4200";
 
-  public url="http://localhost:4200";
+  public url = AppConfig.BASE_ENDPOINT;  
 
   public productList:Product[] = [];
 
@@ -33,7 +34,7 @@ export class ScartComponent implements OnInit {
         //this.productList.push(product);
         //this.productList = this.shoppingCartService.prodArray;
         this.productList = pProductArray;
-        console.log("scart - prodArray: ");
+        //console.log("scart - prodArray: ");
         //console.log(this.shoppingCartService.prodArray);
 
       }
@@ -49,8 +50,8 @@ export class ScartComponent implements OnInit {
     //Retrieve the object from cookie 
     var cartObject = this._cookieService.getObject("cart");
 
-    console.log("Scart getObject:");
-    console.log(cartObject);
+    //console.log("Scart getObject:");
+    //console.log(cartObject);
 
     var prodArr = [];
     prodArr.push(cartObject);
@@ -79,10 +80,10 @@ export class ScartComponent implements OnInit {
 
         testProd = new Product();
 
-        console.log("p:");
-        console.log(p);
-        console.log("stringify p:");
-        console.log(JSON.stringify(p));
+        //console.log("p:");
+        //console.log(p);
+        //console.log("stringify p:");
+        //console.log(JSON.stringify(p));
 
         //alert(p.title);
         /*
@@ -104,8 +105,8 @@ export class ScartComponent implements OnInit {
       });    
     }
 
-    console.log("after loop:");
-    console.log(this.productList);
+    //console.log("after loop:");
+    //console.log(this.productList);
 
 
   }
@@ -130,8 +131,8 @@ export class ScartComponent implements OnInit {
 
   removeItem(item, index){
     //alert('hi');
-    console.log(item);
-    console.log("index is: "+ index);
+    //console.log(item);
+    //console.log("index is: "+ index);
 
     // remove from global cart
     this.shoppingCartService.removeProductFromCart(item, index);

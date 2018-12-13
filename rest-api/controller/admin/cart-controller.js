@@ -2,7 +2,7 @@ fs = require('fs')
 var ProductEntity=require('../../model/product-entity')
 //var CustomerEntity=require('../../model/customer-entity')
 var SaveLaterEntity=require('../../model/savelater-entity')
-//var WishListEntity=require('../../model/wishlist-entity')
+var WishListEntity=require('../../model/wishlist-entity')
 var ImageFolderPath = require('../../config/image-folder-path')
 var randomstring = require("randomstring");
 
@@ -158,6 +158,62 @@ module.exports.postSaveLater =(req,res)=>{
 
 }
 
+/********************* WISH LIST *******************************/
+
+module.exports.findWishLists=(req,res)=> {
+   console.log("@@@@@@@@@@@ Wish Lists: @@@@@@@@@@@@@@");
+   WishListEntity.find({},function(err,data){
+          console.log(data);
+          res.status(200).json(data);
+   });
+
+}
+
+module.exports.editWishList = (req,res)=>{
+
+   var wishList = req.body;
+
+   console.log("editWishList");
+   console.log(wishList);   
+
+   var wishListEntity = new WishListEntity();
+
+   var newProducts = req.body.products;
+
+   for (key in wishList){
+      wishListEntity[key] = wishList[key];
+   }   
+
+   console.log("sl cid:");
+   console.log(wishList.cid);
+
+   console.log("newProducts:");
+   console.log(newProducts);
+
+   WishListEntity.findOneAndUpdate(
+      
+      wishList.cid, 
+
+      { $set: { 
+                  products : newProducts
+      }}
+      ,
+
+      {new: true},
+      
+      (err,data)=>{
+
+         if(err){
+            return res.status(200).send({
+               status:"fail",
+               message: "EditWishList List failed! " + err 
+         });
+         }
+
+      return res.status(200).json(data);
+   });
+}
+
 module.exports.postWishList =(req,res)=>{
    var wishList = req.body;
    var wishListEntity = new WishListEntity();
@@ -176,6 +232,23 @@ module.exports.postWishList =(req,res)=>{
     });
 
 }
+
+module.exports.getWishList = (req,res)=>{
+   var cid = req.params.cid;
+   console.log("getWishList");
+   console.log(cid);
+   WishListEntity.find({cid:cid}, (err,data)=>{
+      if(err){
+         return res.status(404).send({
+            status:"fail",
+            message: "WishList not found with cid " + cid
+        });
+      }
+
+      return res.status(200).json(data);
+   });
+}
+
 
 module.exports.getProduct = (req,res)=>{
    var pid = req.params.pid;
