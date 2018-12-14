@@ -101,6 +101,8 @@ require('./rest-api/router/ladiescloths-router')(endPoint);
 require('./rest-api/router/offeradd-router')(endPoint);
 require('./rest-api/router/common-router')(endPoint);
 require('./rest-api/router/wishlist-router')(endPoint); 
+require('./rest-api/router/checkout-router')(endPoint); 
+
 //here endpoint will be prefix with  v1
 app.use(RESTAPI.REST_VERSION, endPoint);
 
