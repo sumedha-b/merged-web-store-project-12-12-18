@@ -15,22 +15,22 @@ path = require('path'),
 Promise = require('bluebird'); // Promise API 
 
 
-let cdata = [
-    {
-        vendorName: 'Nagendra',
-        email: 'nagendra.synergisticit@gmail.com',
-        vendorId: 'V9292922',
-        cemail: 'nagendra.synergisticit@gmail.com',
-        companyName: 'SynergisticIT TECH',
-    },
-    {
-        vendorName: 'Nagendra',
-        email: 'nagendra.synergisticit@gmail.com',
-        vendorId: 'V9292922',
-        cemail: 'nagendra.synergisticit@gmail.com',
-        companyName: 'SynergisticIT TECH',
-    },
-];
+// let cdata = [
+//     {
+//         vendorName: 'Nagendra',
+//         email: 'nagendra.synergisticit@gmail.com',
+//         vendorId: 'V9292922',
+//         cemail: 'nagendra.synergisticit@gmail.com',
+//         companyName: 'SynergisticIT TECH',
+//     },
+//     {
+//         vendorName: 'Nagendra',
+//         email: 'nagendra.synergisticit@gmail.com',
+//         vendorId: 'V9292922',
+//         cemail: 'nagendra.synergisticit@gmail.com',
+//         companyName: 'SynergisticIT TECH',
+//     },
+// ];
 
 
 //This will just send email for obj data
@@ -61,9 +61,10 @@ function loadTemplate (templateName, contexts) {
     console.log("Loading template.....................");
     
 
-    console.log(templateName);
+    //console.log(templateName);
     console.log(contexts);
     let template = new EmailTemplate(path.join(appRoot, 'templates', templateName));
+
     return Promise.all(contexts.map((context) => {
         return new Promise((resolve, reject) => {
             template.render(context, (err, result) => {
@@ -77,10 +78,10 @@ function loadTemplate (templateName, contexts) {
     }));
 }
 
-var sendEmail=function(cdata){
-    console.log("Sending email...........................");
+var sendVendorEmail=function(cdata){
+    console.log("1.Sending email...........................");
     console.log(cdata);
-    console.log("Sending email...........................");
+    console.log("2.Sending email...........................");
      loadTemplate('vendor', cdata).then((results) => {
     return Promise.all(results.map((result) => {
         sendEmail({
@@ -95,7 +96,24 @@ var sendEmail=function(cdata){
     console.log('Hey Your email has been sent successfully!');
 });
 };
-module.exports.sendEmail=sendEmail;
+module.exports.sendEmail=sendVendorEmail;
 
-
-
+sendOrderEmail=function(cdata){
+    console.log("Order Sending email...........................");
+    console.log(cdata);
+    console.log("2.Sending email...........................");
+     loadTemplate('order-confirmation', cdata).then((results) => {
+    return Promise.all(results.map((result) => {
+        sendEmail({
+            to: result.context.email,
+            from: 'Shopping Cart!!!!!!!!',
+            subject: result.email.subject,
+            html: result.email.html,
+            text: result.email.text,
+        });
+    }));
+}).then(() => {
+    console.log('Hey Your email has been sent successfully!');
+});
+};
+module.exports.sendOrderEmail=sendOrderEmail;
