@@ -10,6 +10,7 @@ module.exports=function(endPoint){
     ///admin/vendors/image/V9000
     //:vcode = is called passing as a part of URI
     endPoint.get("/admin/vendors/image/:vcode",VendorController.findProfilePic);
+    endPoint.get("/admin/vendors/vcode/:vcode",VendorController.findVendorByVcode);
 
     // uriMapping.delete("/vendors/{mid}",VendorController.deleteVendorById);
     endPoint.delete("/admin/vendors/:mid",VendorController.deleteVendorById);

@@ -75,7 +75,8 @@ require('./rest-api/utils/mongodb-utils')();
 // var adDataPusher=require('./rest-api/utils/ad-data-pusher');
 // adDataPusher();
 
-require('./rest-api/utils/product-data-pusher')();
+require('./rest-api/utils/top-vendors-data-pusher')();
+//require('./rest-api/utils/product-data-pusher')();
 ///data pusher for landing page
 // require('./rest-api/utils/featured-data-pusher')();
 // require('./rest-api/utils/bestseller-data-pusher')();
@@ -102,6 +103,7 @@ require('./rest-api/router/ladiescloths-router')(endPoint);
 require('./rest-api/router/offeradd-router')(endPoint);
 require('./rest-api/router/common-router')(endPoint);
 require('./rest-api/router/checkout-router')(endPoint);
+require('./rest-api/router/top-vendors-router')(endPoint);
 
 //here endpoint will be prefix with  v1
 app.use(RESTAPI.REST_VERSION, endPoint);

@@ -32,21 +32,24 @@ module.exports.findProfilePic=(req,res)=> {
        return;
    }
    VendorEntity.find({vcode:pvcode},function(err,data){
-     console.log(err)
-     if (err) 
-     throw err;
+     
+     if (err) {
+      console.log(err)
+      throw err;
+     }
       if(data.length==1){
         var imagePath=data[0].photo;
         var cimagePath=appRoot +"/"+imagePath;
         fs.readFile(cimagePath, function(err, data) {
            console.log(err)
-           if (err) throw err; // Fail if the file can't be read.
+           //if (err) throw err; // Fail if the file can't be read.
              res.writeHead(200, {'Content-Type': 'image/jpeg'});
              res.end(data); // Send the file data to the browser.
          });
-      }else{
-        res.end([]);
       }
+   else{
+        res.end([]);
+   }
   });
    //Reading image from file system
   
@@ -60,6 +63,15 @@ module.exports.findProfilePic=(req,res)=> {
           res.status(200).json(data);
    });
 
+}
+
+module.exports.findVendorByVcode=(req, res) => {
+   id=req.params.vcode;
+   VendorEntity.find({vcode:id}, function(err, data) {
+      console.log("FINDING VENDOR BY ID: "+id);
+      console.log(data);
+      res.status(200).json(data);
+   });
 }
 
 module.exports.saveVendor =(req,res)=>{
