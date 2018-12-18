@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { OrderPlacedDetials } from 'src/app/model/checkoutModels/orderPlacedDetails';
 import { Product } from 'src/app/model/product';
+import { AppConfig } from 'src/app/config/app.config';
 
 @Component({
   selector: 'app-order-confirmation',
@@ -13,12 +14,12 @@ export class OrderConfirmationComponent implements OnInit {
   private orderPlacedDetails:OrderPlacedDetials;
 
   @Input("products")
-  private productList:Product[]=[]
+  private productList:Product[]=[];
+  public url = AppConfig.BASE_ENDPOINT;  
 
   constructor() { }
 
   ngOnInit() {
-    console.log(this.orderPlacedDetails.billingDetails.country);
   }
 
 }

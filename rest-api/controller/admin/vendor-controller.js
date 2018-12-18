@@ -24,6 +24,15 @@ var AppConfig=require('../../config/app.config')
 
 var VendorMail=require('../../service/vendor-mail');
 
+module.exports.findVendorByVcode=(req, res) => {
+   id=req.params.vcode;
+   VendorEntity.find({vcode:id}, function(err, data) {
+      console.log("FINDING VENDOR BY ID: "+id);
+      console.log(data);
+      res.status(200).json(data);
+   });
+}
+
 module.exports.findProfilePic=(req,res)=> {
    //var _id=req.query.id;
    var pvcode=req.params.vcode;
@@ -45,7 +54,8 @@ module.exports.findProfilePic=(req,res)=> {
              res.end(data); // Send the file data to the browser.
          });
       }else{
-        res.end([]);
+        //res.end([]);
+        res.end('');
       }
   });
    //Reading image from file system

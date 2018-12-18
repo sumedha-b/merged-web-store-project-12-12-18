@@ -7,6 +7,7 @@ import { OrderDetails, Item } from '../../model/checkoutModels/orderDetails';
 import { BillingDetails } from '../../model/checkoutModels/billingDetails';
 import { NgForm } from '@angular/forms';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
+import { AppConfig } from 'src/app/config/app.config';
 
 @Component({
   selector: 'app-checkout',
@@ -26,6 +27,7 @@ export class CheckoutComponent implements OnInit {
   public productList:Product[] = [];
   public termsRead:number=0;
   public isCompleted:boolean=false;
+  public url = AppConfig.BASE_ENDPOINT;   
 
   constructor(private _cookieService:CookieService, private shoppingCartService:ShoppingCartService) { }
 
@@ -79,26 +81,30 @@ export class CheckoutComponent implements OnInit {
 
   payWithCard(data) {
     if (data === true) {
-      this.paymentDetails.paymentType= "card"; //cash vs card
-      this.paymentDetails.creditCardNumber=null;
-      this.paymentDetails.creditCardType=null; //mastercard, visa, discover, etc.
-      this.paymentDetails.expDate=null;
-      this.paymentDetails.cvv=null;
+      this.paymentDetails.paymentType= "Card"; //cash vs card
     } else {
-      this.paymentDetails.paymentType= "cash"; //cash vs card
-      this.paymentDetails.creditCardNumber=null;
-      this.paymentDetails.creditCardType=null; //mastercard, visa, discover, etc.
-      this.paymentDetails.expDate=null;
-      this.paymentDetails.cvv=null;
+      this.paymentDetails.paymentType= "Cash"; //cash vs card
     }
+    this.paymentDetails.creditCardNumber=null;
+    this.paymentDetails.creditCardType=null; //mastercard, visa, discover, etc.
+    this.paymentDetails.expDate=null;
+    this.paymentDetails.cvv=null;
     this.toPayWithCard=data;
   }
 
 
 
-  placeOrder() {
+  placeOrder(billingForm:NgForm) {
     if (this.termsRead==0) {
       alert("Please indicate you have read the terms and conditions.");
+      return;
+    }
+    if (!this.paymentDetails.paymentType) {
+      alert("Please select a Payment Method.");
+      return;
+    }
+    if(!billingForm.valid) {
+      alert("Please all required fields of billing details.");
       return;
     }
     this.orderPlacedDetails.billingDetails=this.billingDetails;

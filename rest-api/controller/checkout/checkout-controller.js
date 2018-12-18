@@ -6,6 +6,7 @@ var OrderSummaryEntity = require('../../model/order/order-summary-entity');
 var randomstring = require("randomstring");
 var EmailService=require('../../service/vendor-mail');
 var TransactionEntity = require('../../model/order/transaction-entity');
+var ProductCountUpdate = require('../../service/product-count-update');
 
 module.exports.checkout = (req,res) => {
     var orderPlacedDetails = req.body;
@@ -110,6 +111,9 @@ transactionEntity.save(err =>{
 //if all saving is successfull continues
 //else return with an error
                         EmailService.sendOrderEmail(emailDetails);
+                        ///
+                        //ProductCountUpdate.updateTotalSold(orderDetails.items);
+
                         res.status(200).json({status:"success",message:"order was placed successfully"});
                     }
                 });
