@@ -72,7 +72,6 @@ require('./rest-api/utils/mongodb-utils')();
 // dataPusher();
 
 
-<<<<<<< HEAD
 // var adDataPusher=require('./rest-api/utils/ad-data-pusher');
 // adDataPusher();
 
@@ -85,21 +84,6 @@ require('./rest-api/utils/top-vendors-data-pusher')();
 // datapusher();
 // require('./rest-api/utils/offeradd-data-pusher')();
 
-=======
-var adDataPusher=require('./rest-api/utils/ad-data-pusher');
-adDataPusher();
-require('./rest-api/utils/product-data-pusher')();
-require('./rest-api/utils/search-data-pusher')();
-///data pusher for landing page
-require('./rest-api/utils/featured-data-pusher')();
-require('./rest-api/utils/bestseller-data-pusher')();
-var datapusher=require('./rest-api/utils/ladiescloths-data-pusher');
-datapusher();
-require('./rest-api/utils/offeradd-data-pusher')();
-require('./rest-api/utils/top-vendors-data-pusher')();
-//require('./rest-api/utils/top-vendors-data-pusher')();
-require('./rest-api/utils/vendor-pusher')();
->>>>>>> 148921c5e67da5e4875dce49ae79fdc4a6ef2590
 
 //This is acting as middleware
 //require('./rest-api/security/validate-token')(endPoint);
@@ -118,16 +102,9 @@ require('./rest-api/router/bestseller-router')(endPoint);
 require('./rest-api/router/ladiescloths-router')(endPoint);
 require('./rest-api/router/offeradd-router')(endPoint);
 require('./rest-api/router/common-router')(endPoint);
-<<<<<<< HEAD
 require('./rest-api/router/checkout-router')(endPoint);
 require('./rest-api/router/top-vendors-router')(endPoint);
 
-=======
-require('./rest-api/router/wishlist-router')(endPoint); 
-require('./rest-api/router/checkout-router')(endPoint); 
-require('./rest-api/router/search-router')(endPoint); 
-require('./rest-api/router/top-vendors-router')(endPoint);
->>>>>>> 148921c5e67da5e4875dce49ae79fdc4a6ef2590
 //here endpoint will be prefix with  v1
 app.use(RESTAPI.REST_VERSION, endPoint);
 

@@ -55,16 +55,10 @@ module.exports.findProfilePic=(req,res)=> {
              res.writeHead(200, {'Content-Type': 'image/jpeg'});
              res.end(data); // Send the file data to the browser.
          });
-<<<<<<< HEAD
-=======
       }else{
         //res.end([]);
         res.end('');
->>>>>>> 148921c5e67da5e4875dce49ae79fdc4a6ef2590
       }
-   else{
-        res.end([]);
-   }
   });
    //Reading image from file system
   
