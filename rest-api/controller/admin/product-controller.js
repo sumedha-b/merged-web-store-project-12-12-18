@@ -39,8 +39,13 @@ module.exports.findProductsByIds=(req,res)=> {
  module.exports.findProducts=(req,res)=> {
    console.log("@@@@@@@@@@@product@@@@@@@@@@@@@@");
    ProductEntity.find({},function(err,data){
-          console.log(data);
-          res.status(200).json(data);
+          if(err){
+             //handler the error
+          }else{
+            console.log(data);
+            res.status(200).json(data);
+          }
+          
    });
 
 }

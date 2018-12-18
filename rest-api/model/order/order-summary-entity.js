@@ -9,7 +9,8 @@ var mongoose = require('mongoose');
 var OrderSummarySchema  = new mongoose.Schema({
     orderId: { type: String,required: true, unique: true },
     orderDetailsId: { type: String},
-    sid: { type: String}, //shipping id from shipping_collection
+    sid: { type: String},
+    bid: {type: String}, //shipping id from shipping_collection
     delivaryNotes: { type: String},
     delivaryTime: { type: String},
     delivaryDay: { type: Date},
@@ -19,7 +20,7 @@ var OrderSummarySchema  = new mongoose.Schema({
     dom: {type: Date}
     },{collection: 'order_summary_colletions'});
 
-        //on every save, add the date
+    //on every save, add the date
    OrderSummarySchema.pre('save', function(next) {
     // get the current date
     var currentDate = new Date();

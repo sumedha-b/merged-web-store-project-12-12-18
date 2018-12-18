@@ -17,5 +17,7 @@ module.exports=function(endPoint){
 
     // uriMapping.put("/vendors/{mid}",VendorController.editVendor);
     endPoint.put("/admin/vendors/:mid",VendorController.editVendorById);
+	
+	endPoint.get("/admin/vendors/vcode/:vcode",VendorController.findVendorByVcode);
     
 };

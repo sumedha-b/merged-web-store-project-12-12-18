@@ -29,6 +29,7 @@ import { AddVendorComponent } from './components/vendor/add-vendor/add-vendor.co
 import { VendorListComponent } from './components/vendor/vendor-list/vendor-list.component';
 import { GoogleLoginComponent } from './components/login/google-login/google-login.component';
 import { ManageSliderComponent } from './components/slider/manage-slider/manage-slider.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 const routes: Routes = [
   { path: 'auth-user', component: LoginComponent},
@@ -59,6 +60,7 @@ const routes: Routes = [
    { path: 'contact', component: ContactComponent},
    { path: 'googleLogin', component: GoogleLoginComponent},
    { path: 'manage-slider', component: ManageSliderComponent},
+   { path: 'wish-list', component: WishlistComponent},
    { path: '**', component: LandingPageComponent }
 ];
 

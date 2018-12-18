@@ -11,6 +11,8 @@ import { Review } from '../model/review';
 
 export class ProductService {
 
+   //httpOptions = {headers:new HttpHeaders({'Content-Type':'application/json'})};
+
   constructor(private http: HttpClient) { }
 
   public uploadProduct(data:Product, selectedFile:File):Observable<any>{
@@ -59,6 +61,7 @@ export class ProductService {
     //var pids = ["5bff6a1f56ffe310f8240b2a","5bfc5d405f32c61bf86070e1"];
     //var json_arr = JSON.stringify(pids);
     //formdata.append('pids', json_arr+"");
+    //user-access-token
 
     //var pids = "5bff6a1f56ffe310f8240b2a,5bfc5d405f32c61bf86070e1";
     var pids = data;
@@ -72,14 +75,18 @@ export class ProductService {
 
   public saveReview(data:Review):Observable<any>{
     const endpoint = AppConfig.REVIEW_ENDPOINT;
-    const httpOptions = {headers:new HttpHeaders({'Content-Type':'application/json'})};
-
+    const httpOptions = {headers:new HttpHeaders({'user-access-token':'T0010101010','Content-Type':'application/json','Accept':'application/json'})};
     return this.http.post(endpoint,data,httpOptions);
 
   }
   public getReviewByPid(pid:string):Observable<Review[]>{
     const endpoint = AppConfig.PRODUCT_ENDPOINT + '/' + pid + '/review';
-
+  //How to set data into header
+  var headers: HttpHeaders = new HttpHeaders({'user-access-token':'T0010101010'});
+  //How to set token in the header before making request
+  //to server
+  //step is normal response
+  //let step=this.http.get(AppSettings.API_ENDPOINT+"/products",{headers:headers});
     return this.http.get<Review[]>(endpoint);
   }
 

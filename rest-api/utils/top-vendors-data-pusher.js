@@ -90,40 +90,99 @@ ven1.topVendorPosition=0;
 ven1.vcode="V100";
 ven1.avgProductRatings=4.9;
 ven1.numRatings=21000;
+<<<<<<< HEAD
 ven1.save();
+=======
+//ven1.save();
+ven1.save((err)=>{
+    if (err)
+        console.log("Top Vendor is already created.");
+    else
+        console.log("Top Vendor has been created!!!");
+});
+>>>>>>> 148921c5e67da5e4875dce49ae79fdc4a6ef2590
 
 ven2=new TopVendorEntity();
 ven2.topVendorPosition=1;
 ven2.vcode="V200";
 ven2.avgProductRatings=4.5;
 ven2.numRatings=19560;
+<<<<<<< HEAD
 ven2.save();
+=======
+ven2.save((err)=>{
+    if (err)
+        console.log("Top Vendor is already created.");
+    else
+        console.log("Top Vendor has been created!!!");
+});
+
+>>>>>>> 148921c5e67da5e4875dce49ae79fdc4a6ef2590
 
 ven3=new TopVendorEntity();
 ven3.topVendorPosition=2;
 ven3.vcode="V300";
 ven3.avgProductRatings=4.1;
 ven3.numRatings=18700;
+<<<<<<< HEAD
 ven3.save();
+=======
+ven3.save((err)=>{
+    if (err)
+        console.log("Top Vendor is already created.");
+    else
+        console.log("Top Vendor has been created!!!");
+});
+
+>>>>>>> 148921c5e67da5e4875dce49ae79fdc4a6ef2590
 
 ven4=new TopVendorEntity();
 ven4.topVendorPosition=3;
 ven4.vcode="V400";
 ven4.avgProductRatings=4.8;
 ven4.numRatings=14000;
+<<<<<<< HEAD
 ven4.save();
+=======
+ven4.save((err)=>{
+    if (err)
+        console.log("Top Vendor is already created.");
+    else
+        console.log("Top Vendor has been created!!!");
+});
+>>>>>>> 148921c5e67da5e4875dce49ae79fdc4a6ef2590
 
 ven5=new TopVendorEntity();
 ven5.topVendorPosition=4;
 ven5.vcode="V500";
 ven5.avgProductRatings=3.7;
 ven5.numRatings=10100;
+<<<<<<< HEAD
 ven5.save();
+=======
+ven5.save((err)=>{
+    if (err)
+        console.log("Top Vendor is already created.");
+    else
+        console.log("Top Vendor has been created!!!");
+});
+
+>>>>>>> 148921c5e67da5e4875dce49ae79fdc4a6ef2590
 
 ven6=new TopVendorEntity();
 ven6.topVendorPosition=5;
 ven6.vcode="V600";
 ven6.avgProductRatings=4.0;
 ven6.numRatings=9000;
+<<<<<<< HEAD
 ven6.save();
+=======
+ven6.save((err)=>{
+    if (err)
+        console.log("Top Vendor is already created.");
+    else
+        console.log("Top Vendor has been created!!!");
+});
+
+>>>>>>> 148921c5e67da5e4875dce49ae79fdc4a6ef2590
 }

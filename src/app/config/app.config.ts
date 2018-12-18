@@ -18,6 +18,11 @@ export class AppConfig{
     public static BESTSELLER_ENDPOINT = AppConfig.BASE_ENDPOINT + '/admin/bestseller';
     public static LADIES_CLOTH_ENDPOINT = AppConfig.BASE_ENDPOINT + '/admin/ladiescloths';
     public static OFFERADD_ENDPOINT = AppConfig.BASE_ENDPOINT + '/admin/offeradd';
+<<<<<<< HEAD
     public static CHECKOUT_ENDPOINT = AppConfig.BASE_ENDPOINT + '/checkout';
+=======
+    public static CHECKOUT_ENDPOINT = AppConfig.BASE_ENDPOINT + '/admin/checkout';
+    public static SEARCH_ENDPOINT = AppConfig.BASE_ENDPOINT + '/admin/search';
+>>>>>>> 148921c5e67da5e4875dce49ae79fdc4a6ef2590
     public static TOP_VENDORS_ENDPOINT = AppConfig.BASE_ENDPOINT + '/admin/top-vendor';
 }

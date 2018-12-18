@@ -7,6 +7,8 @@ import { SaveLater } from 'src/app/model/savelater';
 import { ProductService } from 'src/app/services/product.service';
 import { Router } from '@angular/router';
 import { AppConfig } from 'src/app/config/app.config';
+import { WishList } from 'src/app/model/wishlist';
+import { WishlistService } from 'src/app/services/wishlist.service';
 
 @Component({
   selector: 'app-cart',
@@ -19,12 +21,14 @@ export class CartComponent implements OnInit {
   public saveForLaterList:Product[] = [];
   private total:number = 0;
   private needsSaveForLaterList = false;
+  private needsWishList = false;
 
   public url = AppConfig.BASE_ENDPOINT;   
 
   constructor(private _cookieService:CookieService, 
     private shoppingCartService:ShoppingCartService, 
     private saveLaterService:SavelaterService, 
+	private wishlistService:WishlistService, 
     private productService:ProductService, 
     private router: Router) { }
 
@@ -100,6 +104,7 @@ export class CartComponent implements OnInit {
 
         testProd.itemPriceTotal = testProd.price;
         this.total += testProd.price;
+        this.total = +this.total.toFixed(2);
 
         console.log("new item");
         this.productList.push(testProd); 
@@ -117,47 +122,55 @@ export class CartComponent implements OnInit {
     this.saveLaterService.findSaveForLaterByCid(testSaveLater.cid).subscribe(data =>{
 
       console.log("Now to init load the SFL from db");
-      console.log(data[0].products[0]);
 
-      // get the pids from the SFL list in products[]
+      console.log("["+data[0].products[0]+"]");
+      if( data[0].products[0] == ""){
+        console.log("save for later list is blank!!!");
+      }
+      else{	  
+	  
+		  // get the pids from the SFL list in products[]
 
-      //this.productService.test(data[0].products[0]);
+		  //this.productService.test(data[0].products[0]);
 
-      this.productService.getProductByMultipleIds(data[0].products[0]).subscribe(data =>{
-        console.log("returned data from get Product By Multiple Ids:")
-        console.log(data);
+		  this.productService.getProductByMultipleIds(data[0].products[0]).subscribe(data =>{
+			console.log("returned data from get Product By Multiple Ids:")
+			console.log(data);
 
-        if(data && data.body){
+			if(data && data.body && data.body[0] && data.body[0] != ""){
 
-          console.log("data.body[0]");
-          console.log( JSON.parse(data.body) );
+			  console.log("data.body[0]");
+			  console.log( JSON.parse(data.body) );
 
-          var arrayOfProducts = JSON.parse(data.body);
+			  var arrayOfProducts = JSON.parse(data.body);
 
-          arrayOfProducts.forEach( (p) => {
+			  arrayOfProducts.forEach( (p) => {
 
-            testProd = new Product();
-      
-            console.log("p:");
-            console.log(p);
-            console.log("stringify p:");
-            console.log(JSON.stringify(p));
+				testProd = new Product();
+		  
+				console.log("p:");
+				console.log(p);
+				console.log("stringify p:");
+				console.log(JSON.stringify(p));
 
-            testProd = p;
+				testProd = p;
 
-            console.log("get Prod By Mult - testProd");
-            console.log(testProd);
+				console.log("get Prod By Mult - testProd");
+				console.log(testProd);
 
-            this.saveForLaterList.push(testProd);
-          });
-        }else{
-          console.log("data was null !");
-        }
+				this.saveForLaterList.push(testProd);
+			  });
+			}else{
+			  console.log("data was null !");
+			}
 
 
-        //this.saveForLaterList.push(data);
-      });
-
+			//this.saveForLaterList.push(data);
+		  });
+		  
+      }
+	  
+	  
       // push each product into SFL area
       /*
       this.productService.getProductByPid("5bff6a1f56ffe310f8240b2a").subscribe(data =>{
@@ -193,17 +206,24 @@ export class CartComponent implements OnInit {
     //this.shoppingCartService.removeProductFromCart(item, index);
 
     this.total = this.total - (item.price * item.qty);
+    this.total = +this.total.toFixed(2);
     this.productList.splice(index, 1);
   }
 
   minus(item, i){
     console.log(i);
     console.log(item);
-    item.qty--;
-    console.log(item);
-    item.itemPriceTotal = item.price * item.qty;
-    if(item.itemPriceTotal < item.price) item.itemPriceTotal = item.price;
-    this.total -= item.price;
+
+    if(item.qty > 1){
+
+      item.qty--;
+      console.log(item);
+      item.itemPriceTotal = item.price * item.qty;
+      if(item.itemPriceTotal < item.price) item.itemPriceTotal = item.price;
+      this.total -= item.price;
+      this.total = +this.total.toFixed(2);
+
+    }
   }
 
   plus(item, i){
@@ -214,6 +234,7 @@ export class CartComponent implements OnInit {
     item.itemPriceTotal = item.price * item.qty;
     if(item.itemPriceTotal < item.price) item.itemPriceTotal = item.price;
     this.total += item.price;
+    this.total = +this.total.toFixed(2);
   }
 
   uniq(a) {
@@ -254,6 +275,7 @@ export class CartComponent implements OnInit {
     item.itemPriceTotal = item.price
     item.qty = 1;
     this.total += item.price;
+    this.total = +this.total.toFixed(2);
 
     console.log("add to cart from save for later:");
     console.log(item);
@@ -446,12 +468,18 @@ export class CartComponent implements OnInit {
           console.log("item._id isnt in there yet, push into SFL area");
 
           //this.productService.getProductByPid("5bff6a1f56ffe310f8240b2a").subscribe(data =>{
-          this.productService.getProductByPid(item._id).subscribe(data =>{
+          this.productService.getProductByPid(item.pid).subscribe(data =>{
             console.log("product:");
             console.log(data);
-
-            this.saveForLaterList.push(data[0]);
-            //this.productList.push(data[0]);
+	
+            if(data && data[0]){	
+				this.saveForLaterList.push(data[0]);
+				//this.productList.push(data[0]);
+            }
+            else{
+              console.log("data was empty for some reason!");
+            }				
+			
           });
         }
                 
@@ -465,5 +493,128 @@ export class CartComponent implements OnInit {
 
   }
 
+  
+  
+
+  addToWishListFromSaveForLater(item){
+    console.log(item);
+
+    var wishlist:WishList = new WishList();
+
+    this.needsWishList = false;
+
+    // get customer id , cid , check if we have a SaveForLater List for this cid
+    // if we get back an empty array [] , then this customer doesnt have SFL list yet
+    wishlist.cid = "C100"; // dummy customer id for now
+
+    this.wishlistService.findWishLists().subscribe(data =>{
+      console.log(data);
+    });
+    
+    this.wishlistService.findWishListByCid(wishlist.cid).subscribe(data =>{
+
+        console.log("wl:");
+        console.log(data);
+        console.log(data[0]);
+        console.log( (<any>data).length ); // display # of items, prevent length doesnt exist err
+    
+        if( (<any>data).length == 0){
+          console.log("wishlist empty!");
+          this.needsWishList = true;
+
+          console.log("Need Wishlist? " + this.needsWishList);
+
+            // create Wishlist for this customer if it doesnt exist yet
+
+            console.log(item._id);
+
+            var wishListItem:WishList = new WishList();
+
+            wishListItem.products = [];
+          
+            wishListItem.cid = "C100"; // dummy customer id for now
+            wishListItem.wid = "W"+item._id;
+            wishListItem.products.push( item._id ); // the pid for this product 
+
+            this.wishlistService.addWishList(wishListItem).subscribe(data =>{
+              if(data.status== "success"){
+                console.log('save addWishList successfull - Wish List created!');
+              }else{
+                console.log("addWishList failed:");
+                console.log(data);
+              }
+            });     
+
+        }
+        else{
+
+          console.log("wish list already exists");
+
+          // else update the existing SFL list   
+          var wishListItem:WishList = new WishList();
+          wishListItem.products = [];
+
+          // get existing SFL products and put into wishListItem
+          console.log("data[0].products");
+          console.log(data[0].products);
+
+          console.log("data[0].products[0]");
+          console.log(data[0].products[0]);
+
+          // push array values into array
+          //wishListItem.products.concat( data[0].products );
+            
+          wishListItem.cid = "C100"; // dummy customer id for now
+          //wishListItem.products.push( item._id ); // the pid for this product 
+
+          console.log("item _id: " + item._id);
+
+          if(data[0].products.length != 0 && data[0].products != ""){
+            console.log("wish list products not empty, get existing products");
+            wishListItem.products = data[0].products;
+          }
+          // check if item._id already exists in the list
+
+          if( data[0].products[0].indexOf(item._id) !== -1 ){
+          //if( data[0].products.includes(item._id) ){
+            console.log("item._id already exists");
+          }
+          else{
+            console.log("item._id isnt in there yet");
+            wishListItem.products.push(item._id);
+          }
+          
+          console.log("pre uniq");
+          console.log(wishListItem.products);
+
+          wishListItem.products = this.uniq(wishListItem.products);
+
+          console.log("post uniq");
+          console.log(wishListItem.products);
+
+          console.log("Edit save wish list - product id array:");
+          console.log(wishListItem.products);
+
+          // public editSaveForLater(saveLater:SaveLater,id)
+          this.wishlistService.editWishList(wishListItem, wishListItem.cid).subscribe(data =>{
+            if(data.status== "success"){
+              console.log('edit Wish List successfull - Wish List edited!');
+            }else{
+              console.log("edit Wish List failed:");
+              console.log(data);
+            }
+          });
+
+
+        }
+
+
+    });
+
+
+  }
+  
+  
+  
 
 }

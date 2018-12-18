@@ -131,8 +131,15 @@
                         <table class="table table-responsive">
                             <thead>
                                 <tr>
-                                    <th colspan="2"><h3>Save For Later</h3></th>
+                                    <th colspan="2">
+                                        
+                                        <h3>Save For Later</h3>
+                                    
+                                        <a routerLink="/wish-list"  class="boxed-btn" style="color:#fff;cursor: pointer;" >View Wish List</a>
+
+                                    </th>
                                 </tr>
+
                                 <tr>
                                     <th>Product</th>
                                     <th>Price</th>
@@ -154,9 +161,11 @@
                                                 <i class="fas fa-times"></i> 
                                             </div>
                                             <div class="thumb">
-                                                <img src="{{url}}/{{item.imageUrl}}" alt="cart image" style="height:100px;">
+                                                <img src="{{url}}/load-image?imageUrl={{item.imageUrl}}" alt="cart image" style="height:100px;">
                                                 <br />
-                                                <a (click)="addToCartFromSaveForLater(item, index)" style="color:#2a9cf5;cursor: pointer;">Add to Cart</a>
+                                                <a (click)="addToCartFromSaveForLater(item, index)" style="color:#2a9cf5;cursor: pointer;">Add to Cart</a><br /><br />
+
+                                                <a (click)="addToWishListFromSaveForLater(item, index)" style="color:#2a9cf5;cursor: pointer;">Add to Wish List</a>
                                             </div>
                                             <div class="content">
                                                 <h4 class="title">{{item.title}}</h4>

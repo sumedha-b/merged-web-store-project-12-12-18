@@ -29,6 +29,6 @@ var CustomerCardSchema  = new mongoose.Schema({
 });
 
 //Here we are registering ProfileSchema as model in mongoose
-var CustomerCardEntity=mongoose.model('Login', CustomerCardSchema);
+var CustomerCardEntity=mongoose.model('CustomerCard', CustomerCardSchema);
 //exporting object ProfileEntity
 module.exports=CustomerCardEntity;

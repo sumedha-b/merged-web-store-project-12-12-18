@@ -7,15 +7,13 @@
 //This mongoose is ORM for 
 var mongoose = require('mongoose');
 var OrderDetailSchema  = new mongoose.Schema({
-    id: { type: String,required: true, unique: true },
-    ProductId: { type: String},
-    Quantity: { type: Number}, //shipping id from shipping_collection
-    OrderID: { type: String},
+    orderId: { type: String,required: true, unique: true },
+    products: {type:String},
     doe: {type: Date},
     dom: {type: Date}
     },{collection: 'order_detail_colletions'});
 
-        //on every save, add the date
+    //on every save, add the date
    OrderDetailSchema.pre('save', function(next) {
     // get the current date
     var currentDate = new Date();
@@ -28,7 +26,13 @@ var OrderDetailSchema  = new mongoose.Schema({
     next(); //means go ahead and save it into db now
 });
 
+var ItemSchema = new mongoose.Schema({
+  pid:{type:String},
+  quantity:{type:Number},
+  unitPrice:{type:Number}
+});
 //Here we are registering OrderDetailEntity as model in mongoose
 var OrderDetailEntity=mongoose.model('OrderDetail', OrderDetailSchema);
+var ItemEntity = mongoose.model('Item', ItemSchema);
 //exporting object ProfileEntity
 module.exports=OrderDetailEntity;
